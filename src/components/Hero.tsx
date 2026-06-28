@@ -74,11 +74,11 @@ export function Hero() {
             >
               <Magnetic>
                 <RiveSpaceshipCTA
-                  label="View Projects"
-                  href="#projects"
+                  label="View Experience"
+                  href="#experience"
                   onClick={(e) => {
                     e.preventDefault()
-                    document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })
+                    document.getElementById('experience')?.scrollIntoView({ behavior: 'smooth' })
                   }}
                 />
               </Magnetic>
