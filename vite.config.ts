@@ -2,8 +2,8 @@ import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 import { fileURLToPath, URL } from 'node:url'
 
-export default defineConfig({
-  base: '/Portfolio/',
+export default defineConfig(({ command }) => ({
+  base: command === 'build' ? '/Portfolio/' : '/',
   plugins: [react()],
   resolve: {
     alias: {
@@ -13,4 +13,4 @@ export default defineConfig({
   optimizeDeps: {
     exclude: ['@rive-app/canvas', '@rive-app/react-canvas'],
   },
-})
+}))
