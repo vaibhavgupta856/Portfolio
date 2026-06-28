@@ -19,12 +19,14 @@ import { FinaleSection } from './components/FinaleSection'
 import { Footer } from './components/Footer'
 import { ScreenPaint } from './components/ScreenPaint'
 import { ScrollReveal } from './components/ScrollReveal'
+import { AmbientMusic } from './components/AmbientMusic'
 
 export default function App() {
   return (
     <AppErrorBoundary>
       <SmoothScroll>
         <CustomCursor />
+        <AmbientMusic />
         <FilmGrain />
         <ScreenPaint />
         <ScrollProgress />

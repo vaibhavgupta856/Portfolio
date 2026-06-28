@@ -79,34 +79,44 @@ export function Footer() {
                 <p className="uppercase tracking-wider text-surface/40 text-xs mb-3">Links</p>
 
                 <a
-
                   href={personalInfo.github}
-
                   target="_blank"
-
                   rel="noopener noreferrer"
-
                   className="block hover:opacity-70 transition-opacity"
-
                 >
-
                   GitHub
-
                 </a>
-
                 <a
-
                   href={personalInfo.linkedin}
-
                   target="_blank"
-
                   rel="noopener noreferrer"
-
                   className="block mt-2 hover:opacity-70 transition-opacity"
-
                 >
                   LinkedIn
-
+                </a>
+                <a
+                  href={personalInfo.leetcode}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block mt-2 hover:opacity-70 transition-opacity"
+                >
+                  LeetCode
+                </a>
+                <a
+                  href={personalInfo.codeforces}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block mt-2 hover:opacity-70 transition-opacity"
+                >
+                  Codeforces
+                </a>
+                <a
+                  href={personalInfo.resume}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block mt-2 hover:opacity-70 transition-opacity"
+                >
+                  Resume
                 </a>
 
               </div>

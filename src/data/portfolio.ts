@@ -8,14 +8,26 @@ export const personalInfo = {
   availability: 'Open to Onsite & Remote',
   github: 'https://github.com/vaibhavgupta856',
   linkedin: 'https://linkedin.com/in/vaibhav-gupta-6ba288256',
-  leetcode: 'https://leetcode.com/u/vaibhavgupta856',
-  codeforces: 'https://codeforces.com/profile/vaibhavgupta856',
+  leetcode: 'https://leetcode.com/u/gupta__vaibhav__/',
+  codeforces: 'https://codeforces.com/profile/Vaibhav_Gupta_22',
+  resume:
+    'https://drive.google.com/file/d/1051-0SqZ_jU8LnPoYWB1mQ8pTtgQ2CRH/view?usp=sharing',
   profileImage: '/profile.jpg',
 }
 
 export const stats = [
-  { label: 'Codeforces', value: '1776', suffix: 'Expert' },
-  { label: 'LeetCode', value: '2104', suffix: 'Knight' },
+  {
+    label: 'Codeforces',
+    value: '1776',
+    suffix: 'Expert',
+    href: 'https://codeforces.com/profile/Vaibhav_Gupta_22',
+  },
+  {
+    label: 'LeetCode',
+    value: '2104',
+    suffix: 'Knight',
+    href: 'https://leetcode.com/u/gupta__vaibhav__/',
+  },
   { label: 'DSA Solved', value: '1200+', suffix: 'Problems' },
 ]
 
@@ -184,8 +196,18 @@ export const projects: Project[] = [
 ]
 
 export const achievements = [
-  { title: 'LeetCode Rating', value: '2104 (Knight)', icon: 'code' },
-  { title: 'Codeforces Rating', value: '1776 (Expert)', icon: 'zap' },
+  {
+    title: 'LeetCode Rating',
+    value: '2104 (Knight)',
+    icon: 'code',
+    href: 'https://leetcode.com/u/gupta__vaibhav__/',
+  },
+  {
+    title: 'Codeforces Rating',
+    value: '1776 (Expert)',
+    icon: 'zap',
+    href: 'https://codeforces.com/profile/Vaibhav_Gupta_22',
+  },
 ]
 
 export const navLinks = [

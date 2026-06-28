@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion'
-import { Code2, Zap, Mail, Phone, MapPin, Github, Linkedin } from 'lucide-react'
+import { Code2, Zap, Mail, Phone, MapPin, Github, Linkedin, FileText } from 'lucide-react'
 import { SectionHeading, FadeIn } from './SectionHeading'
 import { achievements, personalInfo } from '../data/portfolio'
 import { SectionSpaceGlow } from './ConnectorsHeroBackground'
@@ -58,7 +58,7 @@ export function Contact() {
                 </div>
               </div>
 
-              <div className="flex gap-3 mt-6">
+              <div className="flex flex-wrap gap-3 mt-6">
                 <a
                   href={personalInfo.github}
                   target="_blank"
@@ -77,6 +77,33 @@ export function Contact() {
                 >
                   <Linkedin size={20} />
                 </a>
+                <a
+                  href={personalInfo.leetcode}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="p-3 rounded-xl glass hover:bg-white/[0.06] transition-colors text-white/50 hover:text-cyan-glow"
+                  aria-label="LeetCode"
+                >
+                  <Code2 size={20} />
+                </a>
+                <a
+                  href={personalInfo.codeforces}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="p-3 rounded-xl glass hover:bg-white/[0.06] transition-colors text-white/50 hover:text-cyan-glow"
+                  aria-label="Codeforces"
+                >
+                  <Zap size={20} />
+                </a>
+                <a
+                  href={personalInfo.resume}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="p-3 rounded-xl glass hover:bg-white/[0.06] transition-colors text-white/50 hover:text-cyan-glow"
+                  aria-label="Resume"
+                >
+                  <FileText size={20} />
+                </a>
               </div>
             </div>
           </FadeIn>
@@ -85,15 +112,8 @@ export function Contact() {
             <div className="space-y-3">
               {achievements.map((item, i) => {
                 const Icon = iconMap[item.icon as keyof typeof iconMap]
-                return (
-                  <motion.div
-                    key={item.title}
-                    initial={{ opacity: 0, x: 16 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: i * 0.08 }}
-                    className="flex items-center gap-4 p-4 rounded-xl glass border border-white/[0.06]"
-                  >
+                const inner = (
+                  <>
                     <div className="p-2.5 rounded-lg bg-indigo-500/15">
                       <Icon size={20} className="text-cyan-glow" />
                     </div>
@@ -101,9 +121,44 @@ export function Contact() {
                       <div className="text-xs text-white/35">{item.title}</div>
                       <div className="font-display text-lg font-bold text-gradient">{item.value}</div>
                     </div>
+                  </>
+                )
+                return (
+                  <motion.div
+                    key={item.title}
+                    initial={{ opacity: 0, x: 16 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: i * 0.08 }}
+                    className="rounded-xl glass border border-white/[0.06] overflow-hidden"
+                  >
+                    {'href' in item && item.href ? (
+                      <a
+                        href={item.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center gap-4 p-4 hover:bg-white/[0.04] transition-colors"
+                      >
+                        {inner}
+                      </a>
+                    ) : (
+                      <div className="flex items-center gap-4 p-4">{inner}</div>
+                    )}
                   </motion.div>
                 )
               })}
+
+              <motion.a
+                href={personalInfo.resume}
+                target="_blank"
+                rel="noopener noreferrer"
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+                className="flex items-center justify-center gap-2 w-full mt-2 py-3.5 rounded-xl glass border border-white/[0.08] font-semibold text-sm tracking-wide text-white/75 hover:text-cyan-glow hover:border-cyan-glow/25 transition-colors"
+              >
+                <FileText size={16} />
+                View Resume
+              </motion.a>
 
               <motion.a
                 href={`mailto:${personalInfo.email}`}

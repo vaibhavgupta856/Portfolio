@@ -74,15 +74,28 @@ export function Navbar() {
             ))}
           </ul>
 
-          <Magnetic strength={0.15}>
-            <a
-              href={`mailto:${personalInfo.email}`}
-              data-cursor="hover"
-              className="hidden md:inline-flex items-center px-5 py-2.5 text-sm font-medium rounded-full bg-accent hover:bg-accent-glow transition-all duration-300 glow-border"
-            >
-              Get in Touch
-            </a>
-          </Magnetic>
+          <div className="hidden md:flex items-center gap-3">
+            <Magnetic strength={0.15}>
+              <a
+                href={personalInfo.resume}
+                target="_blank"
+                rel="noopener noreferrer"
+                data-cursor="hover"
+                className="inline-flex items-center px-5 py-2.5 text-sm font-medium rounded-full glass border border-white/[0.1] hover:border-cyan-glow/30 transition-all duration-300"
+              >
+                Resume
+              </a>
+            </Magnetic>
+            <Magnetic strength={0.15}>
+              <a
+                href={`mailto:${personalInfo.email}`}
+                data-cursor="hover"
+                className="inline-flex items-center px-5 py-2.5 text-sm font-medium rounded-full bg-accent hover:bg-accent-glow transition-all duration-300 glow-border"
+              >
+                Get in Touch
+              </a>
+            </Magnetic>
+          </div>
 
           <button
             onClick={() => setMobileOpen(!mobileOpen)}
@@ -118,6 +131,21 @@ export function Navbar() {
                   </button>
                 </motion.li>
               ))}
+              <motion.li
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: navLinks.length * 0.05 }}
+              >
+                <a
+                  href={personalInfo.resume}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={() => setMobileOpen(false)}
+                  className="block w-full text-left py-4 text-2xl font-display font-semibold text-white/80 hover:text-white border-b border-white/5"
+                >
+                  Resume
+                </a>
+              </motion.li>
             </ul>
           </motion.div>
         )}

@@ -1,6 +1,6 @@
 import { useRef } from 'react'
 import { motion, useScroll, useTransform } from 'framer-motion'
-import { Github, Linkedin, Mail } from 'lucide-react'
+import { Github, Linkedin, Mail, Code2, Zap, FileText } from 'lucide-react'
 import { personalInfo, stats } from '../data/portfolio'
 import { ProfilePhoto } from './ProfilePhoto'
 import { GlitchText } from './TextReveal'
@@ -84,6 +84,18 @@ export function Hero() {
               </Magnetic>
               <Magnetic strength={0.18}>
                 <a
+                  href={personalInfo.resume}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  data-cursor="hover"
+                  className="px-7 py-3 rounded-full glass hover:bg-white/[0.06] font-medium transition-all duration-300 flex items-center gap-2 font-mono text-sm border border-white/[0.08]"
+                >
+                  <FileText size={16} />
+                  Resume
+                </a>
+              </Magnetic>
+              <Magnetic strength={0.18}>
+                <a
                   href={`mailto:${personalInfo.email}`}
                   data-cursor="hover"
                   className="px-7 py-3 rounded-full glass hover:bg-white/[0.06] font-medium transition-all duration-300 flex items-center gap-2 font-mono text-sm border border-white/[0.08]"
@@ -98,7 +110,7 @@ export function Hero() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.9 }}
-              className="mt-6 flex items-center justify-center lg:justify-start gap-5 pointer-events-auto"
+              className="mt-6 flex flex-wrap items-center justify-center lg:justify-start gap-5 pointer-events-auto"
             >
               <a
                 href={personalInfo.github}
@@ -118,6 +130,33 @@ export function Hero() {
               >
                 <Linkedin size={22} />
               </a>
+              <a
+                href={personalInfo.leetcode}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-white/35 hover:text-cyan-glow transition-colors"
+                aria-label="LeetCode"
+              >
+                <Code2 size={22} />
+              </a>
+              <a
+                href={personalInfo.codeforces}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-white/35 hover:text-cyan-glow transition-colors"
+                aria-label="Codeforces"
+              >
+                <Zap size={22} />
+              </a>
+              <a
+                href={personalInfo.resume}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-white/35 hover:text-cyan-glow transition-colors"
+                aria-label="Resume"
+              >
+                <FileText size={22} />
+              </a>
             </motion.div>
           </div>
 
@@ -130,22 +169,45 @@ export function Hero() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 1, duration: 0.7 }}
-          className="mt-14 grid grid-cols-3 gap-3 max-w-xl mx-auto lg:mx-0"
+          className="mt-14 grid grid-cols-3 gap-3 max-w-xl mx-auto lg:mx-0 pointer-events-auto"
         >
-          {stats.map((stat, i) => (
-            <motion.div
-              key={stat.label}
-              initial={{ opacity: 0, y: 16 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 1.1 + i * 0.08 }}
-              className="glass rounded-xl p-4 text-center border border-white/[0.06]"
-            >
-              <div className="font-display text-xl md:text-2xl font-bold text-gradient">{stat.value}</div>
-              <div className="text-[10px] text-white/35 mt-1 font-mono uppercase tracking-wider">
-                {stat.label}
-              </div>
-            </motion.div>
-          ))}
+          {stats.map((stat, i) => {
+            const card = (
+              <>
+                <div className="font-display text-xl md:text-2xl font-bold text-gradient">{stat.value}</div>
+                <div className="text-[10px] text-white/35 mt-1 font-mono uppercase tracking-wider">
+                  {stat.label}
+                </div>
+              </>
+            )
+
+            return (
+              <motion.div
+                key={stat.label}
+                initial={{ opacity: 0, y: 16 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 1.1 + i * 0.08 }}
+                className={`glass rounded-xl p-4 text-center border border-white/[0.06] ${
+                  'href' in stat && stat.href ? 'hover:border-cyan-glow/25 transition-colors' : ''
+                }`}
+              >
+                {'href' in stat && stat.href ? (
+                  <a
+                    href={stat.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    data-cursor="hover"
+                    className="block hover:opacity-90 transition-opacity"
+                    aria-label={`${stat.label} profile`}
+                  >
+                    {card}
+                  </a>
+                ) : (
+                  card
+                )}
+              </motion.div>
+            )
+          })}
         </motion.div>
       </div>
 
