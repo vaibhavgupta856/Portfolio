@@ -1,4 +1,4 @@
-import { createContext, useCallback, useContext, useEffect, useRef, useState, type ReactNode } from 'react'
+import { createContext, useCallback, useContext, useEffect, useRef, useState } from 'react'
 import { Volume2, VolumeX } from 'lucide-react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useLenis } from '../context/LenisContext'
