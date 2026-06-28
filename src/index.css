@@ -1,0 +1,308 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-[#030014] text-white font-body antialiased;
+    overflow-x: hidden;
+  }
+
+  body.custom-cursor-active,
+  body.custom-cursor-active a,
+  body.custom-cursor-active button {
+    cursor: none;
+  }
+
+  ::selection {
+    @apply bg-accent/40 text-white;
+  }
+
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-surface;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-accent/40 rounded-full;
+  }
+}
+
+@layer utilities {
+  .text-gradient {
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(
+      90deg,
+      #e2e8ff,
+      #94a3ff,
+      #38bdf8,
+      #c4b5fd,
+      #e2e8ff
+    );
+    background-size: 300% 100%;
+    animation: gradient-flow 10s ease infinite;
+  }
+
+  .text-gradient-flow {
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(
+      90deg,
+      #818cf8,
+      #38bdf8,
+      #a5b4fc,
+      #67e8f9,
+      #818cf8
+    );
+    background-size: 400% 100%;
+    animation: gradient-flow 8s ease infinite;
+  }
+
+  .text-gradient-subtle {
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(
+      90deg,
+      rgba(226, 232, 255, 0.7),
+      rgba(148, 163, 255, 0.95),
+      rgba(56, 189, 248, 0.9),
+      rgba(226, 232, 255, 0.7)
+    );
+    background-size: 300% 100%;
+    animation: gradient-flow 12s ease infinite;
+  }
+
+  .space-stars {
+    background-image:
+      radial-gradient(1px 1px at 20% 30%, rgba(255, 255, 255, 0.35), transparent),
+      radial-gradient(1px 1px at 60% 70%, rgba(255, 255, 255, 0.25), transparent),
+      radial-gradient(1px 1px at 50% 50%, rgba(255, 255, 255, 0.2), transparent),
+      radial-gradient(1px 1px at 80% 10%, rgba(255, 255, 255, 0.3), transparent),
+      radial-gradient(1.5px 1.5px at 90% 60%, rgba(148, 163, 255, 0.4), transparent),
+      radial-gradient(1px 1px at 10% 80%, rgba(56, 189, 248, 0.35), transparent),
+      radial-gradient(1px 1px at 35% 15%, rgba(255, 255, 255, 0.2), transparent),
+      radial-gradient(1px 1px at 75% 85%, rgba(255, 255, 255, 0.25), transparent);
+    background-size: 550px 550px, 480px 480px, 620px 620px, 400px 400px, 520px 520px, 460px 460px, 500px 500px, 440px 440px;
+  }
+
+  .space-card,
+  .text-panel {
+    background: rgba(6, 8, 24, 0.62);
+    backdrop-filter: blur(16px);
+  }
+
+  .glass {
+    background: rgba(6, 8, 24, 0.5);
+    @apply backdrop-blur-xl border border-white/[0.08];
+  }
+
+  .section-heading-label {
+    font-family: Orbitron, ui-sans-serif, system-ui, sans-serif;
+    font-size: clamp(2.25rem, 6.5vw, 4.75rem);
+    font-weight: 700;
+    line-height: 1.05;
+    letter-spacing: 0.1em;
+    color: rgba(240, 244, 255, 0.95);
+    display: block;
+    filter: drop-shadow(0 2px 14px rgba(0, 0, 0, 0.5));
+  }
+
+  .section-title {
+    font-family: Orbitron, ui-sans-serif, system-ui, sans-serif;
+    font-size: clamp(1.35rem, 3vw, 2rem);
+    font-weight: 600;
+    line-height: 1.2;
+    letter-spacing: 0.04em;
+    color: rgba(255, 255, 255, 0.55);
+  }
+
+  .glow-border {
+    box-shadow:
+      0 0 0 1px rgba(99, 102, 241, 0.15),
+      0 0 40px -10px rgba(99, 102, 241, 0.3);
+  }
+
+  .cyber-grid {
+    background-image:
+      linear-gradient(rgba(99, 102, 241, 0.07) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(99, 102, 241, 0.07) 1px, transparent 1px);
+    background-size: 48px 48px;
+    mask-image: radial-gradient(ellipse at center, black 20%, transparent 75%);
+  }
+
+  .scan-line {
+    background: linear-gradient(
+      to bottom,
+      transparent 0%,
+      rgba(34, 211, 238, 0.08) 48%,
+      rgba(34, 211, 238, 0.15) 50%,
+      rgba(34, 211, 238, 0.08) 52%,
+      transparent 100%
+    );
+    background-size: 100% 200%;
+    animation: scan-line 4s linear infinite;
+  }
+
+  .tech-card {
+    @apply relative overflow-hidden;
+  }
+
+  .tech-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      105deg,
+      transparent 40%,
+      rgba(99, 102, 241, 0.06) 50%,
+      transparent 60%
+    );
+    transform: translateX(-100%);
+    transition: transform 0.6s ease;
+  }
+
+  .tech-card:hover::before {
+    transform: translateX(100%);
+  }
+
+  .terminal-window {
+    @apply glass border border-white/[0.08];
+  }
+}
+
+@keyframes scan-line {
+  0% {
+    background-position: 0 -100%;
+  }
+  100% {
+    background-position: 0 100%;
+  }
+}
+
+@keyframes gradient-flow {
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+@keyframes grain-shift {
+  0%,
+  100% {
+    transform: translate(0, 0);
+  }
+  25% {
+    transform: translate(-2%, -3%);
+  }
+  50% {
+    transform: translate(3%, 1%);
+  }
+  75% {
+    transform: translate(1%, 4%);
+  }
+}
+
+@keyframes underline-grow {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+@keyframes lusion-arrow {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  33% {
+    transform: translate3d(0, 1em, 0);
+  }
+  100% {
+    transform: translate3d(0, 1em, 0);
+  }
+}
+
+@keyframes lusion-text {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  33% {
+    transform: translate3d(0, 1.5em, 0);
+  }
+  100% {
+    transform: translate3d(0, 1.5em, 0);
+  }
+}
+
+:root {
+  --cross-size: clamp(0.875rem, 1vw, 2rem);
+}
+
+@keyframes connector-glow {
+  0%,
+  100% {
+    box-shadow: 0 24px 80px -20px rgba(64, 96, 255, 0.2);
+  }
+  50% {
+    box-shadow: 0 28px 90px -16px rgba(32, 255, 160, 0.28);
+  }
+}
+
+.connectors-frame {
+  animation: connector-glow 6s ease-in-out infinite;
+}
+
+.tunnel-vignette {
+  background: radial-gradient(ellipse at center, transparent 35%, rgba(3, 3, 8, 0.85) 100%);
+}
+
+.lusion-card-led {
+  box-shadow:
+    0 0 0 1px rgba(99, 102, 241, 0.2),
+    0 8px 40px -12px rgba(99, 102, 241, 0.35),
+    inset 0 1px 0 rgba(255, 255, 255, 0.06);
+}
+
+.lusion-card-led::before {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(
+    135deg,
+    rgba(129, 140, 248, 0.5),
+    transparent 40%,
+    transparent 60%,
+    rgba(34, 211, 238, 0.4)
+  );
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+  animation: card-led-pulse 3s ease-in-out infinite;
+}
+
+@keyframes card-led-pulse {
+  0%,
+  100% {
+    opacity: 0.6;
+  }
+  50% {
+    opacity: 1;
+  }
+}
