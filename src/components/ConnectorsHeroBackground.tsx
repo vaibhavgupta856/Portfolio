@@ -1,5 +1,6 @@
 import { lazy, Suspense, useEffect, useRef, useState } from 'react'
 import { ErrorBoundary } from './ErrorBoundary'
+import { areConnectorsPreloaded } from '../lib/preloadAssets'
 
 const LazyConnectorsScene = lazy(() =>
   import('./ConnectorsScene').then((m) => ({ default: m.ConnectorsScene })),
@@ -19,6 +20,11 @@ export function ConnectorsSectionBackground() {
   const containerRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
+    if (areConnectorsPreloaded()) {
+      setShouldLoad(true)
+      return
+    }
+
     const idleTimer = window.setTimeout(() => setShouldLoad(true), 600)
 
     const observer = new IntersectionObserver(

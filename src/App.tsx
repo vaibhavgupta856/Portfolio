@@ -20,53 +20,67 @@ import { Footer } from './components/Footer'
 import { ScreenPaint } from './components/ScreenPaint'
 import { ScrollReveal } from './components/ScrollReveal'
 import { AmbientMusic } from './components/AmbientMusic'
+import { LoadingScreen } from './components/LoadingScreen'
+import { useAssetPreloader } from './hooks/useAssetPreloader'
+import { AnimatePresence } from 'framer-motion'
 
 export default function App() {
+  const { ready, progress } = useAssetPreloader()
+
   return (
     <AppErrorBoundary>
-      <SmoothScroll>
-        <CustomCursor />
-        <AmbientMusic />
-        <FilmGrain />
-        <ScreenPaint />
-        <ScrollProgress />
-        <ScrollVideoBackground />
-        <AnimatedBackground />
-        <Navbar />
+      <AnimatePresence mode="wait">
+        {!ready && <LoadingScreen key="loader" progress={progress} />}
+      </AnimatePresence>
 
-        <main className="relative z-10">
-          <Hero />
-          <TechMarquee />
+      <div
+        className={`transition-opacity duration-700 ${ready ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}
+        aria-hidden={!ready}
+      >
+        <SmoothScroll>
+          <CustomCursor />
+          <AmbientMusic />
+          <FilmGrain />
+          <ScreenPaint />
+          <ScrollProgress />
+          <ScrollVideoBackground />
+          <AnimatedBackground />
+          <Navbar />
 
-          <ScrollReveal>
-            <About />
-          </ScrollReveal>
+          <main className="relative z-10">
+            <Hero />
+            <TechMarquee />
 
-          <ScrollReveal>
-            <Experience />
-          </ScrollReveal>
+            <ScrollReveal>
+              <About />
+            </ScrollReveal>
 
-          <ScrollReveal>
-            <FeaturedWorkStrip />
-          </ScrollReveal>
+            <ScrollReveal>
+              <Experience />
+            </ScrollReveal>
 
-          <ScrollReveal>
-            <Skills />
-          </ScrollReveal>
+            <ScrollReveal>
+              <FeaturedWorkStrip />
+            </ScrollReveal>
 
-          <ScrollReveal>
-            <LazyGlobeSection />
-          </ScrollReveal>
+            <ScrollReveal>
+              <Skills />
+            </ScrollReveal>
 
-          <SpacemanTunnelSection />
+            <ScrollReveal>
+              <LazyGlobeSection />
+            </ScrollReveal>
 
-          <ScrollReveal>
-            <Contact />
-          </ScrollReveal>
-        </main>
-        <FinaleSection />
-        <Footer />
-      </SmoothScroll>
+            <SpacemanTunnelSection />
+
+            <ScrollReveal>
+              <Contact />
+            </ScrollReveal>
+          </main>
+          <FinaleSection />
+          <Footer />
+        </SmoothScroll>
+      </div>
     </AppErrorBoundary>
   )
 }
