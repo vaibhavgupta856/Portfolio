@@ -14,7 +14,7 @@ function FallbackCTA({ label, href, onClick, className = '', onMouseEnter }: Riv
       href={href}
       onClick={onClick}
       onMouseEnter={onMouseEnter}
-      className={`group px-8 py-3.5 rounded-full bg-accent hover:bg-accent-glow font-medium transition-all duration-300 glow-border flex items-center gap-2 font-mono text-sm ${className}`}
+      className={`group px-8 py-3.5 rounded-full bg-accent hover:bg-accent-glow font-medium transition-colors duration-150 glow-border flex items-center gap-2 font-mono text-sm ${className}`}
     >
       {label}
       <span className="group-hover:translate-x-1 transition-transform">→</span>

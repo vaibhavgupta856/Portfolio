@@ -16,7 +16,7 @@ function ProjectCard({ project }: { project: Project }) {
 
   const inner = (
 
-    <div className="h-full glass rounded-xl p-5 md:p-6 border border-white/[0.07] hover:border-cyan-glow/25 transition-colors duration-300 group tech-card space-card">
+    <div className="h-full glass rounded-xl p-5 md:p-6 border border-white/[0.07] hover:border-cyan-glow/25 transition-colors duration-150 group tech-card space-card">
 
       <div className={`h-1 w-12 rounded-full bg-gradient-to-r ${project.gradient} mb-4`} />
 

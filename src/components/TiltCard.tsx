@@ -7,10 +7,12 @@ interface TiltCardProps {
   maxTilt?: number
 }
 
-export function TiltCard({ children, className = '', maxTilt = 8 }: TiltCardProps) {
+const SPRING = { stiffness: 480, damping: 38, mass: 0.25 }
+
+export function TiltCard({ children, className = '', maxTilt = 6 }: TiltCardProps) {
   const ref = useRef<HTMLDivElement>(null)
-  const rotateX = useSpring(0, { stiffness: 200, damping: 20 })
-  const rotateY = useSpring(0, { stiffness: 200, damping: 20 })
+  const rotateX = useSpring(0, SPRING)
+  const rotateY = useSpring(0, SPRING)
 
   const onMove = (e: MouseEvent<HTMLDivElement>) => {
     const el = ref.current

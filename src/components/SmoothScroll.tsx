@@ -7,11 +7,15 @@ export function SmoothScroll({ children }: { children: ReactNode }) {
 
   useEffect(() => {
     const instance = new Lenis({
-      duration: 1.15,
-      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      lerp: 0.09,
       smoothWheel: true,
-      touchMultiplier: 1.5,
+      syncTouch: true,
+      touchMultiplier: 1.25,
+      wheelMultiplier: 1,
+      autoRaf: false,
     })
+
+    document.documentElement.classList.add('lenis', 'lenis-smooth')
 
     setLenis(instance)
 
@@ -24,6 +28,7 @@ export function SmoothScroll({ children }: { children: ReactNode }) {
 
     return () => {
       cancelAnimationFrame(frame)
+      document.documentElement.classList.remove('lenis', 'lenis-smooth')
       instance.destroy()
       setLenis(null)
     }

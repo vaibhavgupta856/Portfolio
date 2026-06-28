@@ -20,32 +20,22 @@ export function CustomCursor() {
       if (ringRef.current) ringRef.current.style.transform = transform
     }
 
-    const onMove = (e: MouseEvent) => move(e.clientX, e.clientY)
-
-    const onOver = (e: MouseEvent) => {
-      const target = e.target as HTMLElement
-      if (target.closest('a, button, [data-cursor="hover"]')) setHovering(true)
-    }
-
-    const onOut = (e: MouseEvent) => {
-      const target = e.target as HTMLElement
-      if (target.closest('a, button, [data-cursor="hover"]')) setHovering(false)
+    const onMove = (e: MouseEvent) => {
+      move(e.clientX, e.clientY)
+      const target = document.elementFromPoint(e.clientX, e.clientY) as HTMLElement | null
+      setHovering(!!target?.closest('a, button, [data-cursor="hover"]'))
     }
 
     const onDown = () => setClicking(true)
     const onUp = () => setClicking(false)
 
     window.addEventListener('mousemove', onMove, { passive: true })
-    document.addEventListener('mouseover', onOver)
-    document.addEventListener('mouseout', onOut)
     window.addEventListener('mousedown', onDown)
     window.addEventListener('mouseup', onUp)
 
     return () => {
       document.body.classList.remove('custom-cursor-active')
       window.removeEventListener('mousemove', onMove)
-      document.removeEventListener('mouseover', onOver)
-      document.removeEventListener('mouseout', onOut)
       window.removeEventListener('mousedown', onDown)
       window.removeEventListener('mouseup', onUp)
     }
@@ -53,7 +43,7 @@ export function CustomCursor() {
 
   if (!enabled) return null
 
-  const ringSize = hovering ? 56 : clicking ? 28 : 36
+  const ringSize = hovering ? 52 : clicking ? 28 : 36
 
   return (
     <>
@@ -62,7 +52,6 @@ export function CustomCursor() {
         className="fixed top-0 left-0 z-[200] pointer-events-none mix-blend-difference will-change-transform"
         style={{
           transform: 'translate3d(-100px, -100px, 0) translate(-50%, -50%)',
-          transition: 'none',
         }}
       >
         <div
@@ -70,7 +59,6 @@ export function CustomCursor() {
           style={{
             width: clicking ? 5 : hovering ? 6 : 8,
             height: clicking ? 5 : hovering ? 6 : 8,
-            transition: 'width 80ms linear, height 80ms linear',
           }}
         />
       </div>
@@ -83,7 +71,6 @@ export function CustomCursor() {
           height: ringSize,
           opacity: hovering ? 0.9 : 0.55,
           transform: 'translate3d(-100px, -100px, 0) translate(-50%, -50%)',
-          transition: 'width 80ms linear, height 80ms linear, opacity 80ms linear',
         }}
       />
     </>

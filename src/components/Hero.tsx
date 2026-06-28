@@ -82,23 +82,23 @@ export function Hero() {
                   }}
                 />
               </Magnetic>
-              <Magnetic strength={0.18}>
+              <Magnetic strength={0.12}>
                 <a
                   href={personalInfo.resume}
                   target="_blank"
                   rel="noopener noreferrer"
                   data-cursor="hover"
-                  className="px-7 py-3 rounded-full glass hover:bg-white/[0.06] font-medium transition-all duration-300 flex items-center gap-2 font-mono text-sm border border-white/[0.08]"
+                  className="px-7 py-3 rounded-full glass hover:bg-white/[0.06] font-medium transition-colors duration-150 flex items-center gap-2 font-mono text-sm border border-white/[0.08]"
                 >
                   <FileText size={16} />
                   Resume
                 </a>
               </Magnetic>
-              <Magnetic strength={0.18}>
+              <Magnetic strength={0.12}>
                 <a
                   href={`mailto:${personalInfo.email}`}
                   data-cursor="hover"
-                  className="px-7 py-3 rounded-full glass hover:bg-white/[0.06] font-medium transition-all duration-300 flex items-center gap-2 font-mono text-sm border border-white/[0.08]"
+                  className="px-7 py-3 rounded-full glass hover:bg-white/[0.06] font-medium transition-colors duration-150 flex items-center gap-2 font-mono text-sm border border-white/[0.08]"
                 >
                   <Mail size={16} />
                   Contact

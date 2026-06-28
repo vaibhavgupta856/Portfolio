@@ -7,12 +7,14 @@ interface MagneticProps {
   strength?: number
 }
 
-export function Magnetic({ children, className = '', strength = 0.28 }: MagneticProps) {
+const SPRING = { stiffness: 520, damping: 42, mass: 0.25 }
+
+export function Magnetic({ children, className = '', strength = 0.14 }: MagneticProps) {
   const ref = useRef<HTMLDivElement>(null)
   const x = useMotionValue(0)
   const y = useMotionValue(0)
-  const springX = useSpring(x, { stiffness: 260, damping: 18 })
-  const springY = useSpring(y, { stiffness: 260, damping: 18 })
+  const springX = useSpring(x, SPRING)
+  const springY = useSpring(y, SPRING)
 
   const onMove = (e: MouseEvent<HTMLDivElement>) => {
     const el = ref.current

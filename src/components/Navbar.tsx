@@ -38,7 +38,7 @@ export function Navbar() {
         initial={{ y: -100 }}
         animate={{ y: 0 }}
         transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+        className={`fixed top-0 left-0 right-0 z-50 transition-[background,padding,backdrop-filter] duration-200 ${
           scrolled ? 'glass py-3' : 'py-5 bg-transparent'
         }`}
       >
@@ -81,7 +81,7 @@ export function Navbar() {
                 target="_blank"
                 rel="noopener noreferrer"
                 data-cursor="hover"
-                className="inline-flex items-center px-5 py-2.5 text-sm font-medium rounded-full glass border border-white/[0.1] hover:border-cyan-glow/30 transition-all duration-300"
+                className="inline-flex items-center px-5 py-2.5 text-sm font-medium rounded-full glass border border-white/[0.1] hover:border-cyan-glow/30 transition-colors duration-150"
               >
                 Resume
               </a>
@@ -90,7 +90,7 @@ export function Navbar() {
               <a
                 href={`mailto:${personalInfo.email}`}
                 data-cursor="hover"
-                className="inline-flex items-center px-5 py-2.5 text-sm font-medium rounded-full bg-accent hover:bg-accent-glow transition-all duration-300 glow-border"
+                className="inline-flex items-center px-5 py-2.5 text-sm font-medium rounded-full bg-accent hover:bg-accent-glow transition-colors duration-150 glow-border"
               >
                 Get in Touch
               </a>
