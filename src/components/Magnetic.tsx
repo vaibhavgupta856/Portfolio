@@ -1,5 +1,4 @@
-import { useRef, type ReactNode, type MouseEvent } from 'react'
-import { motion, useMotionValue, useSpring } from 'framer-motion'
+import { type ReactNode } from 'react'
 
 interface MagneticProps {
   children: ReactNode
@@ -7,39 +6,7 @@ interface MagneticProps {
   strength?: number
 }
 
-const SPRING = { stiffness: 520, damping: 42, mass: 0.25 }
-
-export function Magnetic({ children, className = '', strength = 0.14 }: MagneticProps) {
-  const ref = useRef<HTMLDivElement>(null)
-  const x = useMotionValue(0)
-  const y = useMotionValue(0)
-  const springX = useSpring(x, SPRING)
-  const springY = useSpring(y, SPRING)
-
-  const onMove = (e: MouseEvent<HTMLDivElement>) => {
-    const el = ref.current
-    if (!el) return
-    const rect = el.getBoundingClientRect()
-    const offsetX = e.clientX - (rect.left + rect.width / 2)
-    const offsetY = e.clientY - (rect.top + rect.height / 2)
-    x.set(offsetX * strength)
-    y.set(offsetY * strength)
-  }
-
-  const onLeave = () => {
-    x.set(0)
-    y.set(0)
-  }
-
-  return (
-    <motion.div
-      ref={ref}
-      style={{ x: springX, y: springY }}
-      onMouseMove={onMove}
-      onMouseLeave={onLeave}
-      className={className}
-    >
-      {children}
-    </motion.div>
-  )
+/** Passthrough — magnetic springs were adding lag on hover. */
+export function Magnetic({ children, className = '' }: MagneticProps) {
+  return <div className={className}>{children}</div>
 }

@@ -1,11 +1,11 @@
 import { Suspense, useRef, type MutableRefObject } from 'react'
-import { Canvas, useFrame } from '@react-three/fiber'
-import { Float, Stars, useTexture } from '@react-three/drei'
+import { Canvas, useFrame, useThree } from '@react-three/fiber'
+import { Stars, useTexture } from '@react-three/drei'
 import type { MotionValue } from 'framer-motion'
 import { useMotionValueEvent } from 'framer-motion'
-import { MathUtils, type Mesh } from 'three'
+import { type Mesh } from 'three'
 import { ErrorBoundary } from './ErrorBoundary'
-import { LusionAstronautModel, LusionAstronautStatic } from './LusionAstronaut'
+import { LusionAstronautStatic } from './LusionAstronaut'
 import { LUSION } from '../lib/lusionAssets'
 import { useLusionBuf } from '../hooks/useLusionBuf'
 
@@ -15,37 +15,16 @@ type TunnelAstronautCanvasProps = {
   scrollProgress: MotionValue<number>
 }
 
-/** Lerp scroll progress so spaceman + camera move smoothly */
-function ScrollSmoother({
-  targetRef,
-  progressRef,
-}: {
-  targetRef: MutableRefObject<number>
-  progressRef: MutableRefObject<number>
-}) {
-  useFrame((_, delta) => {
-    const t = 1 - Math.exp(-7 * delta)
-    progressRef.current = MathUtils.lerp(progressRef.current, targetRef.current, t)
-  })
-  return null
-}
-
-/** Lusion diamond prop */
 function LusionDiamond({ progressRef }: { progressRef: MutableRefObject<number> }) {
   const geometry = useLusionBuf(LUSION.models.diamond)
   const matcap = useTexture(LUSION.textures.whiteMatcap)
   const mesh = useRef<Mesh>(null)
 
-  useFrame((state) => {
+  useFrame(() => {
     if (!mesh.current) return
-    const t = state.clock.elapsedTime
     const p = progressRef.current
-    mesh.current.position.set(
-      Math.sin(t * 0.7 + p * 3) * 2.2,
-      1.2 + Math.cos(t * 0.5) * 0.4 - p * 2,
-      -3 - p * 4,
-    )
-    mesh.current.rotation.set(t * 0.4, t * 0.6, t * 0.25)
+    mesh.current.position.set(Math.sin(p * 3) * 2.2, 1.2 - p * 2, -3 - p * 4)
+    mesh.current.rotation.set(p * 2, p * 3, p)
   })
 
   return (
@@ -55,98 +34,73 @@ function LusionDiamond({ progressRef }: { progressRef: MutableRefObject<number> 
   )
 }
 
-/** Real Lusion astronaut — scroll drives in / loop / out animation */
-function LusionAstronautRig({ progressRef }: { progressRef: MutableRefObject<number> }) {
-  return (
-    <>
-      <LusionAstronautModel animProgressRef={progressRef} scale={ASTRONAUT_SCALE} />
-      <pointLight position={[0, 1, 0.4]} intensity={0.8} color="#22d3ee" distance={4} />
-      <pointLight position={[0, 0.5, 1]} intensity={0.5} color="#ffffff" distance={3} />
-    </>
-  )
-}
-
 function TunnelCamera({ progressRef }: { progressRef: MutableRefObject<number> }) {
-  const camZ = useRef(5.5)
-  const camY = useRef(0.5)
-  const lookY = useRef(0.85)
-
-  useFrame((state, delta) => {
+  useFrame((state) => {
     const p = progressRef.current
-    const t = 1 - Math.exp(-6 * delta)
-    const targetZ = 5.5 - p * 1.5
-    const targetY = 0.5 + p * 0.8
-    const targetLookY = 0.85 - p * 5
-
-    camZ.current = MathUtils.lerp(camZ.current, targetZ, t)
-    camY.current = MathUtils.lerp(camY.current, targetY, t)
-    lookY.current = MathUtils.lerp(lookY.current, targetLookY, t)
-
-    state.camera.position.z = camZ.current
-    state.camera.position.y = camY.current
-    state.camera.lookAt(0, lookY.current, 0)
+    state.camera.position.z = 5.5 - p * 1.5
+    state.camera.position.y = 0.5 + p * 0.8
+    state.camera.lookAt(0, 0.85 - p * 5, 0)
   })
   return null
 }
 
-function TunnelScene({
+function ScrollDriver({
+  scrollProgress,
   progressRef,
-  targetRef,
 }: {
+  scrollProgress: MotionValue<number>
   progressRef: MutableRefObject<number>
-  targetRef: MutableRefObject<number>
+}) {
+  const invalidate = useThree((s) => s.invalidate)
+
+  useMotionValueEvent(scrollProgress, 'change', (v) => {
+    progressRef.current = v
+    invalidate()
+  })
+
+  return null
+}
+
+function TunnelScene({
+  scrollProgress,
+  progressRef,
+}: {
+  scrollProgress: MotionValue<number>
+  progressRef: MutableRefObject<number>
 }) {
   return (
     <>
       <color attach="background" args={['#030308']} />
       <fog attach="fog" args={['#030308', 4, 22]} />
-      <ambientLight intensity={0.35} />
-      <directionalLight position={[4, 6, 5]} intensity={1.2} />
-      <pointLight position={[-3, 2, 4]} intensity={0.9} color="#818cf8" />
-      <pointLight position={[3, -2, 2]} intensity={0.5} color="#22d3ee" />
+      <ambientLight intensity={0.4} />
+      <directionalLight position={[4, 6, 5]} intensity={1.1} />
+      <pointLight position={[-3, 2, 4]} intensity={0.7} color="#818cf8" />
 
-      <ScrollSmoother targetRef={targetRef} progressRef={progressRef} />
+      <ScrollDriver scrollProgress={scrollProgress} progressRef={progressRef} />
       <TunnelCamera progressRef={progressRef} />
-      <Stars radius={60} depth={40} count={900} factor={2.8} fade speed={0.4} />
-      <LusionDiamond progressRef={progressRef} />
-      <AstronautWithFallback progressRef={progressRef} />
+      <Stars radius={50} depth={30} count={280} factor={2.2} fade speed={0} />
+      <Suspense fallback={null}>
+        <LusionDiamond progressRef={progressRef} />
+      </Suspense>
+      <LusionAstronautStatic scrollRef={progressRef} scale={ASTRONAUT_SCALE} />
     </>
   )
 }
 
 function TunnelCanvasInner({ scrollProgress }: TunnelAstronautCanvasProps) {
   const progressRef = useRef(0)
-  const targetRef = useRef(0)
-
-  useMotionValueEvent(scrollProgress, 'change', (v) => {
-    targetRef.current = v
-  })
 
   return (
     <div className="absolute inset-0 z-[5] pointer-events-none">
       <Canvas
-        dpr={[1, 1]}
+        dpr={1}
         camera={{ position: [0, 0.5, 5.5], fov: 48 }}
         gl={{ alpha: true, antialias: false, powerPreference: 'high-performance' }}
-        frameloop="always"
+        frameloop="demand"
       >
-        <Suspense fallback={null}>
-          <TunnelScene progressRef={progressRef} targetRef={targetRef} />
-        </Suspense>
+        <TunnelScene scrollProgress={scrollProgress} progressRef={progressRef} />
       </Canvas>
     </div>
-  )
-}
-
-function AstronautWithFallback({ progressRef }: { progressRef: MutableRefObject<number> }) {
-  return (
-    <ErrorBoundary fallback={<LusionAstronautStatic scrollRef={progressRef} scale={ASTRONAUT_SCALE} />}>
-      <Suspense fallback={<LusionAstronautStatic scrollRef={progressRef} scale={ASTRONAUT_SCALE} />}>
-        <Float speed={0.55} rotationIntensity={0.03} floatIntensity={0.05}>
-          <LusionAstronautRig progressRef={progressRef} />
-        </Float>
-      </Suspense>
-    </ErrorBoundary>
   )
 }
 

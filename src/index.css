@@ -105,13 +105,12 @@
 
   .space-card,
   .text-panel {
-    background: rgba(6, 8, 24, 0.62);
-    backdrop-filter: blur(16px);
+    background: rgba(6, 8, 24, 0.78);
   }
 
   .glass {
-    background: rgba(6, 8, 24, 0.5);
-    @apply backdrop-blur-xl border border-white/[0.08];
+    background: rgba(6, 8, 24, 0.72);
+    @apply border border-white/[0.08];
   }
 
   .section-heading-label {
@@ -204,6 +203,15 @@
   }
   50% {
     background-position: 100% 50%;
+  }
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
   }
 }
 

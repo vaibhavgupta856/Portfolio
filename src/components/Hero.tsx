@@ -1,5 +1,4 @@
-import { useRef } from 'react'
-import { motion, useScroll, useTransform } from 'framer-motion'
+import { motion } from 'framer-motion'
 import { Github, Linkedin, Mail, Code2, Zap, FileText } from 'lucide-react'
 import { personalInfo, stats } from '../data/portfolio'
 import { ProfilePhoto } from './ProfilePhoto'
@@ -9,66 +8,47 @@ import { Magnetic } from './Magnetic'
 import { SectionSpaceGlow } from './SectionSpaceGlow'
 
 export function Hero() {
-  const sectionRef = useRef<HTMLElement>(null)
-
-  const { scrollYProgress } = useScroll({
-    target: sectionRef,
-    offset: ['start start', 'end start'],
-  })
-
-  const textY = useTransform(scrollYProgress, [0, 1], [0, 100])
-  const textOpacity = useTransform(scrollYProgress, [0, 0.75], [1, 0])
-  const photoScale = useTransform(scrollYProgress, [0, 1], [1, 1.06])
-
   return (
     <section
       id="hero"
-      ref={sectionRef}
       className="relative min-h-[100svh] flex items-center px-4 sm:px-6 pt-20 overflow-hidden"
     >
       <SectionSpaceGlow />
 
       <div className="max-w-6xl mx-auto w-full relative z-10 pointer-events-none">
-        <motion.div
-          style={{ y: textY, opacity: textOpacity }}
-          className="grid lg:grid-cols-2 gap-12 items-center"
-        >
+        <div className="grid lg:grid-cols-2 gap-12 items-center">
           <div className="text-center lg:text-left order-2 lg:order-1 pointer-events-none rounded-2xl p-6 md:p-8 text-panel border border-white/[0.06]">
             <motion.p
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              transition={{ delay: 0.2 }}
+              transition={{ delay: 0.1 }}
               className="font-mono text-[11px] uppercase tracking-[0.35em] text-cyan-glow/60 mb-5"
             >
               {personalInfo.title}
             </motion.p>
 
             <motion.h1
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 24 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.35, duration: 0.7 }}
-              className="font-display text-5xl sm:text-6xl md:text-7xl font-bold tracking-[0.02em] leading-[0.95]"
+              transition={{ delay: 0.2, duration: 0.55 }}
+              className="font-display text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight leading-[1.08] mb-5"
             >
-              <span className="text-gradient">{personalInfo.name.split(' ')[0]}</span>
-              <br />
-              <GlitchText className="text-white/95">
-                {personalInfo.name.split(' ')[1]}
-              </GlitchText>
+              <GlitchText>{personalInfo.name}</GlitchText>
             </motion.h1>
 
             <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.55 }}
-              className="mt-5 text-base md:text-lg max-w-lg mx-auto lg:mx-0 leading-relaxed text-white/70"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.35 }}
+              className="text-white/55 text-base md:text-lg max-w-lg mx-auto lg:mx-0 leading-relaxed mb-2"
             >
               {personalInfo.tagline}
             </motion.p>
 
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.7 }}
+              transition={{ delay: 0.45 }}
               className="mt-8 flex flex-wrap items-center justify-center lg:justify-start gap-4 pointer-events-auto"
             >
               <Magnetic>
@@ -85,7 +65,7 @@ export function Hero() {
                   <span className="group-hover:translate-x-1 transition-transform">→</span>
                 </a>
               </Magnetic>
-              <Magnetic strength={0.12}>
+              <Magnetic>
                 <a
                   href={personalInfo.resume}
                   target="_blank"
@@ -97,7 +77,7 @@ export function Hero() {
                   Resume
                 </a>
               </Magnetic>
-              <Magnetic strength={0.12}>
+              <Magnetic>
                 <a
                   href={`mailto:${personalInfo.email}`}
                   data-cursor="hover"
@@ -112,7 +92,7 @@ export function Hero() {
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              transition={{ delay: 0.9 }}
+              transition={{ delay: 0.55 }}
               className="mt-6 flex flex-wrap items-center justify-center lg:justify-start gap-5 pointer-events-auto"
             >
               <a
@@ -163,18 +143,18 @@ export function Hero() {
             </motion.div>
           </div>
 
-          <motion.div style={{ scale: photoScale }} className="order-1 lg:order-2 flex justify-center pointer-events-auto">
+          <div className="order-1 lg:order-2 flex justify-center pointer-events-auto">
             <ProfilePhoto src={personalInfo.profileImage} alt={personalInfo.name} />
-          </motion.div>
-        </motion.div>
+          </div>
+        </div>
 
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 1, duration: 0.7 }}
+          transition={{ delay: 0.6, duration: 0.5 }}
           className="mt-14 grid grid-cols-3 gap-3 max-w-xl mx-auto lg:mx-0 pointer-events-auto"
         >
-          {stats.map((stat, i) => {
+          {stats.map((stat) => {
             const card = (
               <>
                 <div className="font-display text-xl md:text-2xl font-bold text-gradient">{stat.value}</div>
@@ -185,11 +165,8 @@ export function Hero() {
             )
 
             return (
-              <motion.div
+              <div
                 key={stat.label}
-                initial={{ opacity: 0, y: 16 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 1.1 + i * 0.08 }}
                 className={`glass rounded-xl p-4 text-center border border-white/[0.06] ${
                   'href' in stat && stat.href ? 'hover:border-cyan-glow/25 transition-colors' : ''
                 }`}
@@ -208,7 +185,7 @@ export function Hero() {
                 ) : (
                   card
                 )}
-              </motion.div>
+              </div>
             )
           })}
         </motion.div>

@@ -38,21 +38,5 @@ interface GlitchTextProps {
 }
 
 export function GlitchText({ children, className = '' }: GlitchTextProps) {
-  return (
-    <span className={`relative inline-block ${className}`}>
-      <span className="relative z-10 text-gradient-flow">{children}</span>
-      <span
-        className="absolute inset-0 text-cyan-glow/40 translate-x-[2px] animate-glitch-1 select-none text-gradient-flow"
-        aria-hidden
-      >
-        {children}
-      </span>
-      <span
-        className="absolute inset-0 text-accent/40 -translate-x-[2px] animate-glitch-2 select-none text-gradient-flow"
-        aria-hidden
-      >
-        {children}
-      </span>
-    </span>
-  )
+  return <span className={`text-gradient-flow ${className}`}>{children}</span>
 }

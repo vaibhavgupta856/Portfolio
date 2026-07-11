@@ -171,18 +171,14 @@ export function LusionAstronautStatic({
 }) {
   const group = useRef<Group>(null)
   const glass = useLusionBuf(LUSION.models.astronautHelmetGlass)
-  const smoothScroll = useRef(0)
 
-  useFrame((state, delta) => {
+  useFrame(() => {
     if (!group.current) return
-    const t = 1 - Math.exp(-7 * delta)
-    smoothScroll.current = smoothScroll.current + (scrollRef.current - smoothScroll.current) * t
-    const p = smoothScroll.current
-    const time = state.clock.elapsedTime
-    group.current.position.y = 0.8 - p * 5 + Math.sin(time * 0.55) * 0.06
-    group.current.position.x = Math.sin(time * 0.32 + p * 2) * 0.1
-    group.current.rotation.z = Math.sin(time * 0.28) * 0.03
-    group.current.rotation.y = Math.sin(time * 0.22) * 0.08
+    const p = scrollRef.current
+    group.current.position.y = 0.8 - p * 5
+    group.current.position.x = 0
+    group.current.rotation.z = 0
+    group.current.rotation.y = p * 0.4
   })
 
   return (
@@ -190,8 +186,8 @@ export function LusionAstronautStatic({
       <StaticSuitPart part="wearpack" />
       <StaticSuitPart part="glove_shoes" />
       <StaticSuitPart part="helmet" />
-      <mesh geometry={glass} castShadow>
-        <meshPhysicalMaterial color="#b8ecff" transparent opacity={0.3} transmission={0.85} />
+      <mesh geometry={glass}>
+        <meshStandardMaterial color="#b8ecff" transparent opacity={0.35} />
       </mesh>
     </group>
   )

@@ -1,6 +1,5 @@
 import { AppErrorBoundary } from './components/AppErrorBoundary'
 import { SmoothScroll } from './components/SmoothScroll'
-import { CustomCursor } from './components/CustomCursor'
 import { ScrollProgress } from './components/ScrollProgress'
 import { AnimatedBackground } from './components/AnimatedBackground'
 import { TechMarquee } from './components/TechMarquee'
@@ -34,7 +33,6 @@ export default function App() {
         aria-hidden={!ready}
       >
         <SmoothScroll>
-          <CustomCursor />
           <AmbientMusic />
           <ScrollProgress />
           <AnimatedBackground />
