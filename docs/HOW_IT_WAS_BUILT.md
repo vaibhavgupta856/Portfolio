@@ -10,10 +10,10 @@ This is a single-page portfolio inspired by [Lusion](https://lusion.co) — dark
 
 **Design goals:**
 
-- Immersive hero with interactive 3D and video background
-- Scroll-linked tunnel section with astronaut fly-through
+- Immersive hero with scroll reveals and ambient motion
+- Project cards, experience timeline, and contact in a single smooth page
 - Fast perceived load via a preloader that warms critical assets
-- Smooth scrolling and responsive hover without sluggish delays
+- Responsive hover and section animations without heavy WebGL
 - One source of truth for resume links, projects, and experience
 
 ---
@@ -79,7 +79,6 @@ Sections render top-to-bottom inside `SmoothScroll` (Lenis). Global layers sit b
 │  Hero (+ Connectors 3D canvas)          │
 │  TechMarquee                            │
 │  About · Experience · Projects · Skills │
-│  Spaceman Tunnel (scroll-driven 3D)     │
 │  Contact · Finale · Footer              │
 └─────────────────────────────────────────┘
 ```

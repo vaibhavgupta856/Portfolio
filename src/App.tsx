@@ -10,7 +10,6 @@ import { Skills } from './components/Skills'
 import { Experience } from './components/Experience'
 import { FeaturedWorkStrip } from './components/FeaturedWorkStrip'
 import { Contact } from './components/Contact'
-import { SpacemanTunnelSection } from './components/SpacemanTunnelSection'
 import { FinaleSection } from './components/FinaleSection'
 import { Footer } from './components/Footer'
 import { ScrollReveal } from './components/ScrollReveal'
@@ -57,8 +56,6 @@ export default function App() {
             <ScrollReveal>
               <Skills />
             </ScrollReveal>
-
-            <SpacemanTunnelSection />
 
             <ScrollReveal>
               <Contact />
