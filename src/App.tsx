@@ -7,7 +7,6 @@ import { AnimatedBackground } from './components/AnimatedBackground'
 import { TechMarquee } from './components/TechMarquee'
 import { Navbar } from './components/Navbar'
 import { Hero } from './components/Hero'
-import { LazyGlobeSection } from './components/LazyGlobeSection'
 import { About } from './components/About'
 import { Skills } from './components/Skills'
 import { Experience } from './components/Experience'
@@ -63,10 +62,6 @@ export default function App() {
 
             <ScrollReveal>
               <Skills />
-            </ScrollReveal>
-
-            <ScrollReveal>
-              <LazyGlobeSection />
             </ScrollReveal>
 
             <SpacemanTunnelSection />

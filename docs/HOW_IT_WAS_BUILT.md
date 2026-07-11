@@ -43,7 +43,7 @@ Portfolio/
 │   ├── models/connectors.glb  # Hero 3D connectors scene
 │   ├── lusion-assets/         # Tunnel astronaut .buf + textures
 │   ├── profile.jpg            # Hero profile photo
-│   └── markers/               # Globe map markers
+│   └── markers/               # (unused — globe removed)
 ├── src/
 │   ├── App.tsx                # Page layout + loading gate
 │   ├── data/
@@ -79,7 +79,6 @@ Sections render top-to-bottom inside `SmoothScroll` (Lenis). Global layers sit b
 │  Hero (+ Connectors 3D canvas)          │
 │  TechMarquee                            │
 │  About · Experience · Projects · Skills │
-│  Globe (lazy-loaded)                    │
 │  Spaceman Tunnel (scroll-driven 3D)     │
 │  Contact · Finale · Footer              │
 └─────────────────────────────────────────┘
@@ -133,13 +132,7 @@ A **~700vh tall** sticky scroll section. As the user scrolls:
 
 Scroll progress is driven by Framer Motion's `useScroll` + `useTransform`, not Lenis directly, so animations stay in sync with viewport position.
 
-### 5. Globe Section
-
-**Files:** `LazyGlobeSection.tsx`, `GlobeSection.tsx`, `ui/3d-globe.tsx`
-
-Loaded only when near the viewport (`IntersectionObserver`). Shows IIT Goa and Bengaluru markers on an interactive 3D globe.
-
-### 6. Ambient Music
+### 5. Ambient Music
 
 **File:** `AmbientMusic.tsx`
 
@@ -151,7 +144,7 @@ Because browsers block autoplay with sound, the player:
 2. Unmutes on first user interaction (click, scroll via Lenis `virtual-scroll`, or the enter gate)
 3. Remembers enter state in `sessionStorage`
 
-### 7. Interaction Layer
+### 6. Interaction Layer
 
 | Component | Role |
 |-----------|------|
@@ -165,7 +158,7 @@ Because browsers block autoplay with sound, the player:
 
 CSS `scroll-behavior` is set to `auto` so it does not fight Lenis.
 
-### 8. Content Data Layer
+### 7. Content Data Layer
 
 **File:** `src/data/portfolio.ts`
 
@@ -198,7 +191,7 @@ Components import from this file only. To update the live site content, edit `po
 
 ## Performance Decisions
 
-1. **Code splitting** — Connectors scene, globe, and Rive spaceship load on demand
+1. **Code splitting** — Connectors scene and Rive spaceship load on demand
 2. **Asset preloading** — Hero-critical assets load during the splash screen
 3. **Video** — Large WebM; preloader waits for `canplay`, not full buffer
 4. **Rive CTA** — Deferred 3s after mount; falls back to a styled link button

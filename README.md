@@ -30,7 +30,7 @@ For a full technical write-up — architecture, features, assets, performance, a
 
 - React 18 + TypeScript + Vite
 - Tailwind CSS + Framer Motion + Lenis
-- React Three Fiber / Three.js (connectors, tunnel, globe)
+- React Three Fiber / Three.js (connectors, tunnel)
 - Rive (hero CTA spaceship)
 
 ## Customize
