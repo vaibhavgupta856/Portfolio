@@ -1,5 +1,6 @@
 import { type ReactNode } from 'react'
 import { SplitHeading } from './SplitHeading'
+import { useInViewOnce } from '../hooks/useInViewOnce'
 
 interface SectionHeadingProps {
   label: string
@@ -9,8 +10,10 @@ interface SectionHeadingProps {
 }
 
 export function SectionHeading({ label, title, subtitle, className = '' }: SectionHeadingProps) {
+  const { ref, visible } = useInViewOnce<HTMLDivElement>()
+
   return (
-    <div className={`mb-12 ${className}`}>
+    <div ref={ref} className={`mb-12 reveal ${visible ? 'is-in' : ''} ${className}`}>
       <span className="section-heading-label uppercase">{label}</span>
 
       <h2 className="section-title mt-3">
@@ -29,8 +32,20 @@ interface FadeInProps {
   direction?: 'up' | 'down' | 'left' | 'right'
 }
 
-export function FadeIn({ children, className = '' }: FadeInProps) {
-  return <div className={className}>{children}</div>
+export function FadeIn({ children, delay = 0, className = '', direction = 'up' }: FadeInProps) {
+  const { ref, visible } = useInViewOnce<HTMLDivElement>()
+  const dir =
+    direction === 'left' ? 'reveal-left' : direction === 'right' ? 'reveal-right' : 'reveal'
+
+  return (
+    <div
+      ref={ref}
+      className={`${dir} ${visible ? 'is-in' : ''} ${className}`}
+      style={{ transitionDelay: visible ? `${delay}s` : undefined }}
+    >
+      {children}
+    </div>
+  )
 }
 
 interface StaggerContainerProps {

@@ -10,19 +10,24 @@ const items = [
   'LLM Agents',
 ]
 
-/** Static tech strip — CSS marquee was a permanent compositor tax. */
+/** Single-layer CSS translate marquee — cheap compositor work only. */
 export function TechMarquee() {
+  const doubled = [...items, ...items]
+
   return (
     <div className="relative w-full overflow-hidden opacity-70">
-      <div className="flex flex-wrap justify-center gap-x-8 gap-y-2 py-2.5 px-4 border-y border-white/[0.04]">
-        {items.map((item) => (
-          <span
-            key={item}
-            className="font-mono text-xs md:text-sm text-white/25 uppercase tracking-[0.22em]"
-          >
-            {item}
-          </span>
-        ))}
+      <div className="overflow-hidden py-2.5 border-y border-white/[0.04]">
+        <div className="flex gap-12 whitespace-nowrap w-max soft-marquee motion-reduce:animate-none">
+          {doubled.map((item, i) => (
+            <span
+              key={`${item}-${i}`}
+              className="font-mono text-xs md:text-sm text-white/20 uppercase tracking-[0.25em]"
+            >
+              {item}
+              <span className="mx-12 text-cyan-glow/20">✦</span>
+            </span>
+          ))}
+        </div>
       </div>
     </div>
   )

@@ -20,7 +20,7 @@ export function ProfilePhoto({ src, alt, size = 'lg' }: ProfilePhotoProps) {
         vaibhav@iit-goa ~ $
       </div>
 
-      <div className="absolute top-4 right-4 w-2 h-2 rounded-full bg-emerald-400" />
+      <div className="absolute top-4 right-4 w-2 h-2 rounded-full bg-emerald-400 status-pulse" />
     </div>
   )
 }

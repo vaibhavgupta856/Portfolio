@@ -1,11 +1,18 @@
 import { type ReactNode } from 'react'
+import { useInViewOnce } from '../hooks/useInViewOnce'
 
 interface ScrollRevealProps {
   children: ReactNode
   className?: string
 }
 
-/** No Framer scroll observers — sections paint immediately. */
+/** CSS transform/opacity reveal — observer disconnects after first paint. */
 export function ScrollReveal({ children, className = '' }: ScrollRevealProps) {
-  return <div className={className}>{children}</div>
+  const { ref, visible } = useInViewOnce<HTMLDivElement>()
+
+  return (
+    <div ref={ref} className={`reveal ${visible ? 'is-in' : ''} ${className}`}>
+      {children}
+    </div>
+  )
 }

@@ -30,6 +30,7 @@ export default function App() {
       <div
         className={`transition-opacity duration-700 ${ready ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}
         aria-hidden={!ready}
+        data-ready={ready ? 'true' : 'false'}
       >
         <SmoothScroll>
           <AmbientMusic />

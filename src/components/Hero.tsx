@@ -16,19 +16,31 @@ export function Hero() {
       <div className="max-w-6xl mx-auto w-full relative z-10 pointer-events-none">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           <div className="text-center lg:text-left order-2 lg:order-1 pointer-events-none rounded-2xl p-6 md:p-8 text-panel border border-white/[0.06]">
-            <p className="font-mono text-[11px] uppercase tracking-[0.35em] text-cyan-glow/60 mb-5">
+            <p
+              className="hero-enter font-mono text-[11px] uppercase tracking-[0.35em] text-cyan-glow/60 mb-5"
+              style={{ ['--enter-delay' as string]: '80ms' }}
+            >
               {personalInfo.title}
             </p>
 
-            <h1 className="font-display text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight leading-[1.08] mb-5">
+            <h1
+              className="hero-enter font-display text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight leading-[1.08] mb-5"
+              style={{ ['--enter-delay' as string]: '160ms' }}
+            >
               <GlitchText>{personalInfo.name}</GlitchText>
             </h1>
 
-            <p className="text-white/55 text-base md:text-lg max-w-lg mx-auto lg:mx-0 leading-relaxed mb-2">
+            <p
+              className="hero-enter text-white/55 text-base md:text-lg max-w-lg mx-auto lg:mx-0 leading-relaxed mb-2"
+              style={{ ['--enter-delay' as string]: '260ms' }}
+            >
               {personalInfo.tagline}
             </p>
 
-            <div className="mt-8 flex flex-wrap items-center justify-center lg:justify-start gap-4 pointer-events-auto">
+            <div
+              className="hero-enter mt-8 flex flex-wrap items-center justify-center lg:justify-start gap-4 pointer-events-auto"
+              style={{ ['--enter-delay' as string]: '360ms' }}
+            >
               <a
                 href="#experience"
                 data-cursor="hover"
@@ -36,7 +48,7 @@ export function Hero() {
                   e.preventDefault()
                   document.getElementById('experience')?.scrollIntoView({ behavior: 'smooth' })
                 }}
-                className="group px-8 py-3.5 rounded-full bg-accent hover:bg-accent-glow font-medium transition-colors duration-150 glow-border flex items-center gap-2 font-mono text-sm"
+                className="group px-8 py-3.5 rounded-full bg-accent hover:bg-accent-glow font-medium transition-[colors,transform] duration-200 hover:-translate-y-0.5 glow-border flex items-center gap-2 font-mono text-sm"
               >
                 View Experience
                 <span className="group-hover:translate-x-1 transition-transform">→</span>
@@ -46,7 +58,7 @@ export function Hero() {
                 target="_blank"
                 rel="noopener noreferrer"
                 data-cursor="hover"
-                className="px-7 py-3 rounded-full glass hover:bg-white/[0.06] font-medium transition-colors duration-150 flex items-center gap-2 font-mono text-sm border border-white/[0.08]"
+                className="px-7 py-3 rounded-full glass hover:bg-white/[0.06] font-medium transition-[colors,transform] duration-200 hover:-translate-y-0.5 flex items-center gap-2 font-mono text-sm border border-white/[0.08]"
               >
                 <FileText size={16} />
                 Resume
@@ -54,14 +66,17 @@ export function Hero() {
               <a
                 href={`mailto:${personalInfo.email}`}
                 data-cursor="hover"
-                className="px-7 py-3 rounded-full glass hover:bg-white/[0.06] font-medium transition-colors duration-150 flex items-center gap-2 font-mono text-sm border border-white/[0.08]"
+                className="px-7 py-3 rounded-full glass hover:bg-white/[0.06] font-medium transition-[colors,transform] duration-200 hover:-translate-y-0.5 flex items-center gap-2 font-mono text-sm border border-white/[0.08]"
               >
                 <Mail size={16} />
                 Contact
               </a>
             </div>
 
-            <div className="mt-6 flex flex-wrap items-center justify-center lg:justify-start gap-5 pointer-events-auto">
+            <div
+              className="hero-enter mt-6 flex flex-wrap items-center justify-center lg:justify-start gap-5 pointer-events-auto"
+              style={{ ['--enter-delay' as string]: '460ms' }}
+            >
               {[
                 { href: personalInfo.github, label: 'GitHub', Icon: Github },
                 { href: personalInfo.linkedin, label: 'LinkedIn', Icon: Linkedin },
@@ -75,7 +90,7 @@ export function Hero() {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={label}
-                  className="text-white/35 hover:text-cyan-glow transition-colors"
+                  className="text-white/35 hover:text-cyan-glow transition-[colors,transform] duration-200 hover:-translate-y-0.5"
                 >
                   <Icon size={22} />
                 </a>
@@ -83,12 +98,18 @@ export function Hero() {
             </div>
           </div>
 
-          <div className="order-1 lg:order-2 flex justify-center pointer-events-auto">
+          <div
+            className="hero-enter order-1 lg:order-2 flex justify-center pointer-events-auto"
+            style={{ ['--enter-delay' as string]: '200ms' }}
+          >
             <ProfilePhoto src={personalInfo.profileImage} alt={personalInfo.name} />
           </div>
         </div>
 
-        <div className="mt-14 grid grid-cols-3 gap-3 max-w-xl mx-auto lg:mx-0 pointer-events-auto">
+        <div
+          className="hero-enter mt-14 grid grid-cols-3 gap-3 max-w-xl mx-auto lg:mx-0 pointer-events-auto"
+          style={{ ['--enter-delay' as string]: '560ms' }}
+        >
           {stats.map((stat) => {
             const card = (
               <>
@@ -102,7 +123,7 @@ export function Hero() {
             return (
               <div
                 key={stat.label}
-                className={`glass rounded-xl p-4 text-center border border-white/[0.06] transition-transform duration-150 hover:-translate-y-0.5 ${
+                className={`glass rounded-xl p-4 text-center border border-white/[0.06] transition-transform duration-200 hover:-translate-y-1 ${
                   'href' in stat && stat.href ? 'hover:border-cyan-glow/25' : ''
                 }`}
               >
