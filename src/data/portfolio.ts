@@ -147,6 +147,7 @@ export const projects: Project[] = [
     ],
     gradient: 'from-indigo-500 via-purple-500 to-cyan-400',
     github: 'https://github.com/vaibhavgupta856/SENTINEL-AIOps_Load_Balancer',
+    demo: 'https://dashboard-zeta-five-78.vercel.app/',
   },
   {
     name: 'REPO PILOT',
@@ -162,6 +163,7 @@ export const projects: Project[] = [
     ],
     gradient: 'from-emerald-500 via-teal-500 to-cyan-400',
     github: 'https://github.com/vaibhavgupta856/REPOPILOT',
+    demo: 'https://repopilot-vaibhavgupta856s-projects.vercel.app/',
   },
   {
     name: 'CHESS ARENA',
@@ -176,6 +178,8 @@ export const projects: Project[] = [
       'Hot-seat, online rooms, adjustable bots, JWT auth, friends, rated ELO, and coach (local/bot)',
     ],
     gradient: 'from-amber-400 via-orange-500 to-rose-500',
+    github: 'https://github.com/vaibhavgupta856/chess_arena',
+    demo: 'https://chessarena-vaibhavgupta856.vercel.app/',
   },
   {
     name: 'AI WEBSITE BUILDER',
