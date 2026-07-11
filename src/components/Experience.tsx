@@ -1,4 +1,3 @@
-import { motion } from 'framer-motion'
 import { Briefcase, MapPin } from 'lucide-react'
 import { SectionHeading, FadeIn } from './SectionHeading'
 import { experience } from '../data/portfolio'
@@ -26,14 +25,9 @@ export function Experience() {
                   <div className="hidden md:block md:w-1/2" />
 
                   <div className="absolute left-0 md:left-1/2 md:-translate-x-1/2 z-10">
-                    <motion.div
-                      whileInView={{ scale: [0.6, 1.12, 1] }}
-                      viewport={{ once: true }}
-                      transition={{ duration: 0.45 }}
-                      className="w-9 h-9 rounded-full bg-[#030014] border border-cyan-glow/40 flex items-center justify-center"
-                    >
+                    <div className="w-9 h-9 rounded-full bg-[#030014] border border-cyan-glow/40 flex items-center justify-center">
                       <Briefcase size={14} className="text-cyan-glow" />
-                    </motion.div>
+                    </div>
                   </div>
 
                   <div
@@ -41,11 +35,7 @@ export function Experience() {
                       index % 2 === 0 ? 'md:pr-12' : 'md:pl-12'
                     }`}
                   >
-                    <motion.div
-                      whileHover={{ y: -4 }}
-                      transition={{ type: 'spring', stiffness: 380, damping: 28 }}
-                      className="glass rounded-xl p-5 md:p-6 border border-white/[0.07] hover:border-cyan-glow/25 transition-colors space-card"
-                    >
+                    <div className="glass rounded-xl p-5 md:p-6 border border-white/[0.07] hover:border-cyan-glow/25 transition-[colors,transform] duration-150 hover:-translate-y-0.5 space-card">
                       <div className="flex flex-wrap items-center gap-3 mb-2">
                         <span className="font-mono text-[10px] text-cyan-glow/80 px-2 py-0.5 rounded-full bg-cyan-glow/10">
                           {job.period}
@@ -61,20 +51,13 @@ export function Experience() {
 
                       <ul className="mt-3 space-y-2">
                         {job.highlights.map((point, i) => (
-                          <motion.li
-                            key={i}
-                            initial={{ opacity: 0, x: -8 }}
-                            whileInView={{ opacity: 1, x: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ delay: 0.08 + i * 0.05 }}
-                            className="flex gap-2 text-xs text-white/50 leading-relaxed"
-                          >
+                          <li key={i} className="flex gap-2 text-xs text-white/50 leading-relaxed">
                             <span className="text-cyan-glow/60 shrink-0">·</span>
                             {point}
-                          </motion.li>
+                          </li>
                         ))}
                       </ul>
-                    </motion.div>
+                    </div>
                   </div>
                 </div>
               </FadeIn>

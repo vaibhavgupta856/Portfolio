@@ -18,8 +18,8 @@ export function TextReveal({ text, className = '', delay = 0 }: TextRevealProps)
             whileInView={{ y: 0, opacity: 1 }}
             viewport={{ once: true }}
             transition={{
-              duration: 0.5,
-              delay: delay + i * 0.07,
+              duration: 0.45,
+              delay: delay + i * 0.06,
               ease: [0.22, 1, 0.36, 1],
             }}
             className="inline-block text-gradient"
@@ -37,22 +37,7 @@ interface GlitchTextProps {
   className?: string
 }
 
+/** Static gradient title — continuous glitch CSS was burning GPU. */
 export function GlitchText({ children, className = '' }: GlitchTextProps) {
-  return (
-    <span className={`relative inline-block ${className}`}>
-      <span className="relative z-10 text-gradient-flow">{children}</span>
-      <span
-        className="absolute inset-0 text-cyan-glow/35 translate-x-[1.5px] animate-glitch-1 select-none text-gradient-flow"
-        aria-hidden
-      >
-        {children}
-      </span>
-      <span
-        className="absolute inset-0 text-accent/30 -translate-x-[1.5px] animate-glitch-2 select-none text-gradient-flow"
-        aria-hidden
-      >
-        {children}
-      </span>
-    </span>
-  )
+  return <span className={`text-gradient ${className}`}>{children}</span>
 }

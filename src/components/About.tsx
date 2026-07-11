@@ -1,4 +1,3 @@
-import { motion } from 'framer-motion'
 import { GraduationCap, MapPin } from 'lucide-react'
 import { SectionHeading, FadeIn } from './SectionHeading'
 import { ProfilePhoto } from './ProfilePhoto'
@@ -22,11 +21,7 @@ export function About() {
             <div className="glass rounded-2xl p-6 md:p-8 border border-white/[0.07] space-card">
               <p className="text-sm md:text-base text-white/70 leading-relaxed">{summary}</p>
 
-              <motion.div
-                whileHover={{ scale: 1.015, y: -2 }}
-                transition={{ type: 'spring', stiffness: 400, damping: 28 }}
-                className="mt-6 rounded-xl p-5 bg-white/[0.03] border border-white/[0.06]"
-              >
+              <div className="mt-6 rounded-xl p-5 bg-white/[0.03] border border-white/[0.06] transition-transform duration-150 hover:-translate-y-0.5">
                 <div className="flex items-start gap-4">
                   <div className="p-3 rounded-xl bg-indigo-500/15">
                     <GraduationCap className="text-cyan-glow" size={22} />
@@ -39,7 +34,7 @@ export function About() {
                     </p>
                   </div>
                 </div>
-              </motion.div>
+              </div>
 
               <div className="mt-5 flex items-center gap-2 text-sm text-white/40">
                 <MapPin size={15} className="text-cyan-glow/70 shrink-0" />

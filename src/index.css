@@ -25,6 +25,11 @@
     overflow-x: hidden;
   }
 
+  section {
+    content-visibility: auto;
+    contain-intrinsic-size: auto 700px;
+  }
+
   body.custom-cursor-active,
   body.custom-cursor-active a,
   body.custom-cursor-active button {
@@ -51,30 +56,12 @@
 @layer utilities {
   .text-gradient {
     @apply bg-clip-text text-transparent;
-    background-image: linear-gradient(
-      90deg,
-      #e2e8ff,
-      #94a3ff,
-      #38bdf8,
-      #c4b5fd,
-      #e2e8ff
-    );
-    background-size: 300% 100%;
-    animation: gradient-flow 10s ease infinite;
+    background-image: linear-gradient(90deg, #e2e8ff, #94a3ff, #38bdf8, #c4b5fd);
   }
 
   .text-gradient-flow {
     @apply bg-clip-text text-transparent;
-    background-image: linear-gradient(
-      90deg,
-      #818cf8,
-      #38bdf8,
-      #a5b4fc,
-      #67e8f9,
-      #818cf8
-    );
-    background-size: 400% 100%;
-    animation: gradient-flow 8s ease infinite;
+    background-image: linear-gradient(90deg, #818cf8, #38bdf8, #a5b4fc, #67e8f9);
   }
 
   .text-gradient-subtle {
@@ -83,11 +70,8 @@
       90deg,
       rgba(226, 232, 255, 0.7),
       rgba(148, 163, 255, 0.95),
-      rgba(56, 189, 248, 0.9),
-      rgba(226, 232, 255, 0.7)
+      rgba(56, 189, 248, 0.9)
     );
-    background-size: 300% 100%;
-    animation: gradient-flow 12s ease infinite;
   }
 
   .space-stars {
@@ -121,7 +105,6 @@
     letter-spacing: 0.1em;
     color: rgba(240, 244, 255, 0.95);
     display: block;
-    filter: drop-shadow(0 2px 14px rgba(0, 0, 0, 0.5));
   }
 
   .section-title {
@@ -156,8 +139,6 @@
       rgba(34, 211, 238, 0.08) 52%,
       transparent 100%
     );
-    background-size: 100% 200%;
-    animation: scan-line 4s linear infinite;
   }
 
   .tech-card {
@@ -297,7 +278,7 @@
 }
 
 .connectors-frame {
-  animation: connector-glow 6s ease-in-out infinite;
+  box-shadow: 0 24px 80px -20px rgba(64, 96, 255, 0.2);
 }
 
 .tunnel-vignette {
@@ -333,7 +314,7 @@
   -webkit-mask-composite: xor;
   mask-composite: exclude;
   pointer-events: none;
-  animation: card-led-pulse 3s ease-in-out infinite;
+  opacity: 0.85;
 }
 
 @keyframes card-led-pulse {

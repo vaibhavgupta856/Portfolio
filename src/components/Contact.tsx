@@ -1,4 +1,3 @@
-import { motion } from 'framer-motion'
 import { Code2, Zap, Mail, Phone, MapPin, Github, Linkedin, FileText } from 'lucide-react'
 import { SectionHeading, FadeIn } from './SectionHeading'
 import { achievements, personalInfo } from '../data/portfolio'
@@ -110,7 +109,7 @@ export function Contact() {
 
           <FadeIn delay={0.1}>
             <div className="space-y-3">
-              {achievements.map((item, i) => {
+              {achievements.map((item) => {
                 const Icon = iconMap[item.icon as keyof typeof iconMap]
                 const inner = (
                   <>
@@ -124,12 +123,8 @@ export function Contact() {
                   </>
                 )
                 return (
-                  <motion.div
+                  <div
                     key={item.title}
-                    initial={{ opacity: 0, x: 16 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: i * 0.08 }}
                     className="rounded-xl glass border border-white/[0.06] overflow-hidden"
                   >
                     {'href' in item && item.href ? (
@@ -144,30 +139,26 @@ export function Contact() {
                     ) : (
                       <div className="flex items-center gap-4 p-4">{inner}</div>
                     )}
-                  </motion.div>
+                  </div>
                 )
               })}
 
-              <motion.a
+              <a
                 href={personalInfo.resume}
                 target="_blank"
                 rel="noopener noreferrer"
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
                 className="flex items-center justify-center gap-2 w-full mt-2 py-3.5 rounded-xl glass border border-white/[0.08] font-semibold text-sm tracking-wide text-white/75 hover:text-cyan-glow hover:border-cyan-glow/25 transition-colors"
               >
                 <FileText size={16} />
                 View Resume
-              </motion.a>
+              </a>
 
-              <motion.a
+              <a
                 href={`mailto:${personalInfo.email}`}
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-                className="block w-full mt-4 py-3.5 rounded-xl bg-gradient-to-r from-indigo-600 to-cyan-600/80 text-center font-semibold text-sm tracking-wide"
+                className="block w-full mt-4 py-3.5 rounded-xl bg-gradient-to-r from-indigo-600 to-cyan-600/80 text-center font-semibold text-sm tracking-wide hover:opacity-95 transition-opacity"
               >
                 Send Message
-              </motion.a>
+              </a>
             </div>
           </FadeIn>
         </div>

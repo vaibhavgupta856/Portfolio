@@ -1,5 +1,3 @@
-import { motion } from 'framer-motion'
-
 import { ArrowUpRight } from 'lucide-react'
 
 import { projects, type Project } from '../data/portfolio'
@@ -167,14 +165,10 @@ export function FeaturedWorkStrip() {
 
           {projects.map((project, i) => (
 
-            <FadeIn key={project.name} delay={i * 0.06}>
-
-              <motion.div whileHover={{ y: -5 }} className="h-full">
-
+            <FadeIn key={project.name} delay={i * 0.04}>
+              <div className="h-full transition-transform duration-150 hover:-translate-y-1">
                 <ProjectCard project={project} />
-
-              </motion.div>
-
+              </div>
             </FadeIn>
 
           ))}

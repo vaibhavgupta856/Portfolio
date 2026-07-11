@@ -10,37 +10,20 @@ const items = [
   'LLM Agents',
 ]
 
-function MarqueeRow({ reverse = false }: { reverse?: boolean }) {
-  const doubled = [...items, ...items]
-
+/** Static tech strip — CSS marquee was a permanent compositor tax. */
+export function TechMarquee() {
   return (
-    <div className="overflow-hidden py-2.5 border-y border-white/[0.04]">
-      <div
-        className={`flex gap-12 whitespace-nowrap w-max ${
-          reverse
-            ? 'animate-[marquee-reverse_40s_linear_infinite]'
-            : 'animate-[marquee_32s_linear_infinite]'
-        }`}
-      >
-        {doubled.map((item, i) => (
+    <div className="relative w-full overflow-hidden opacity-70">
+      <div className="flex flex-wrap justify-center gap-x-8 gap-y-2 py-2.5 px-4 border-y border-white/[0.04]">
+        {items.map((item) => (
           <span
-            key={`${item}-${i}`}
-            className="font-mono text-xs md:text-sm text-white/20 uppercase tracking-[0.25em]"
+            key={item}
+            className="font-mono text-xs md:text-sm text-white/25 uppercase tracking-[0.22em]"
           >
             {item}
-            <span className="mx-12 text-cyan-glow/25">✦</span>
           </span>
         ))}
       </div>
-    </div>
-  )
-}
-
-export function TechMarquee() {
-  return (
-    <div className="relative w-full overflow-hidden opacity-80 space-y-0">
-      <MarqueeRow />
-      <MarqueeRow reverse />
     </div>
   )
 }

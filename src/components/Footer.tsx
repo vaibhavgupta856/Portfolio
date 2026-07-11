@@ -1,10 +1,6 @@
-import { motion } from 'framer-motion'
-
 import { ArrowUp } from 'lucide-react'
 
 import { navLinks, personalInfo } from '../data/portfolio'
-
-import { Magnetic } from './Magnetic'
 
 import { LusionCrossRow } from './LusionCross'
 
@@ -179,25 +175,13 @@ export function Footer() {
 
 
 
-          <Magnetic strength={0.2}>
-
-            <motion.button
-
-              onClick={scrollToTop}
-
-              whileHover={{ y: -3 }}
-
-              className="flex items-center justify-center w-14 h-14 rounded-full bg-surface text-white hover:bg-surface/90 transition-colors"
-
-              aria-label="Back to top"
-
-            >
-
-              <ArrowUp size={18} />
-
-            </motion.button>
-
-          </Magnetic>
+          <button
+            onClick={scrollToTop}
+            className="flex items-center justify-center w-14 h-14 rounded-full bg-surface text-white hover:bg-surface/90 transition-[colors,transform] duration-150 hover:-translate-y-0.5"
+            aria-label="Back to top"
+          >
+            <ArrowUp size={18} />
+          </button>
 
         </div>
 

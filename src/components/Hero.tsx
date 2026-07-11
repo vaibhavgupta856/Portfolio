@@ -1,10 +1,8 @@
-import { motion } from 'framer-motion'
 import { Github, Linkedin, Mail, Code2, Zap, FileText } from 'lucide-react'
 import { personalInfo, stats } from '../data/portfolio'
 import { ProfilePhoto } from './ProfilePhoto'
 import { GlitchText } from './TextReveal'
 import { LusionScrollIndicator } from './LusionDecor'
-import { Magnetic } from './Magnetic'
 import { SectionSpaceGlow } from './SectionSpaceGlow'
 
 export function Hero() {
@@ -18,106 +16,71 @@ export function Hero() {
       <div className="max-w-6xl mx-auto w-full relative z-10 pointer-events-none">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           <div className="text-center lg:text-left order-2 lg:order-1 pointer-events-none rounded-2xl p-6 md:p-8 text-panel border border-white/[0.06]">
-            <motion.p
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.1 }}
-              className="font-mono text-[11px] uppercase tracking-[0.35em] text-cyan-glow/60 mb-5"
-            >
+            <p className="font-mono text-[11px] uppercase tracking-[0.35em] text-cyan-glow/60 mb-5">
               {personalInfo.title}
-            </motion.p>
+            </p>
 
-            <motion.h1
-              initial={{ opacity: 0, y: 24 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.2, duration: 0.55 }}
-              className="font-display text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight leading-[1.08] mb-5"
-            >
+            <h1 className="font-display text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight leading-[1.08] mb-5">
               <GlitchText>{personalInfo.name}</GlitchText>
-            </motion.h1>
+            </h1>
 
-            <motion.p
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.35 }}
-              className="text-white/55 text-base md:text-lg max-w-lg mx-auto lg:mx-0 leading-relaxed mb-2"
-            >
+            <p className="text-white/55 text-base md:text-lg max-w-lg mx-auto lg:mx-0 leading-relaxed mb-2">
               {personalInfo.tagline}
-            </motion.p>
+            </p>
 
-            <motion.div
-              initial={{ opacity: 0, y: 16 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.45 }}
-              className="mt-8 flex flex-wrap items-center justify-center lg:justify-start gap-4 pointer-events-auto"
-            >
-              <Magnetic>
-                <a
-                  href="#experience"
-                  data-cursor="hover"
-                  onClick={(e) => {
-                    e.preventDefault()
-                    document.getElementById('experience')?.scrollIntoView({ behavior: 'smooth' })
-                  }}
-                  className="group px-8 py-3.5 rounded-full bg-accent hover:bg-accent-glow font-medium transition-colors duration-150 glow-border flex items-center gap-2 font-mono text-sm"
-                >
-                  View Experience
-                  <span className="group-hover:translate-x-1 transition-transform">→</span>
-                </a>
-              </Magnetic>
-              <Magnetic>
-                <a
-                  href={personalInfo.resume}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  data-cursor="hover"
-                  className="px-7 py-3 rounded-full glass hover:bg-white/[0.06] font-medium transition-colors duration-150 flex items-center gap-2 font-mono text-sm border border-white/[0.08]"
-                >
-                  <FileText size={16} />
-                  Resume
-                </a>
-              </Magnetic>
-              <Magnetic>
-                <a
-                  href={`mailto:${personalInfo.email}`}
-                  data-cursor="hover"
-                  className="px-7 py-3 rounded-full glass hover:bg-white/[0.06] font-medium transition-colors duration-150 flex items-center gap-2 font-mono text-sm border border-white/[0.08]"
-                >
-                  <Mail size={16} />
-                  Contact
-                </a>
-              </Magnetic>
-            </motion.div>
+            <div className="mt-8 flex flex-wrap items-center justify-center lg:justify-start gap-4 pointer-events-auto">
+              <a
+                href="#experience"
+                data-cursor="hover"
+                onClick={(e) => {
+                  e.preventDefault()
+                  document.getElementById('experience')?.scrollIntoView({ behavior: 'smooth' })
+                }}
+                className="group px-8 py-3.5 rounded-full bg-accent hover:bg-accent-glow font-medium transition-colors duration-150 glow-border flex items-center gap-2 font-mono text-sm"
+              >
+                View Experience
+                <span className="group-hover:translate-x-1 transition-transform">→</span>
+              </a>
+              <a
+                href={personalInfo.resume}
+                target="_blank"
+                rel="noopener noreferrer"
+                data-cursor="hover"
+                className="px-7 py-3 rounded-full glass hover:bg-white/[0.06] font-medium transition-colors duration-150 flex items-center gap-2 font-mono text-sm border border-white/[0.08]"
+              >
+                <FileText size={16} />
+                Resume
+              </a>
+              <a
+                href={`mailto:${personalInfo.email}`}
+                data-cursor="hover"
+                className="px-7 py-3 rounded-full glass hover:bg-white/[0.06] font-medium transition-colors duration-150 flex items-center gap-2 font-mono text-sm border border-white/[0.08]"
+              >
+                <Mail size={16} />
+                Contact
+              </a>
+            </div>
 
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.55 }}
-              className="mt-6 flex flex-wrap items-center justify-center lg:justify-start gap-5 pointer-events-auto"
-            >
+            <div className="mt-6 flex flex-wrap items-center justify-center lg:justify-start gap-5 pointer-events-auto">
               {[
                 { href: personalInfo.github, label: 'GitHub', Icon: Github },
                 { href: personalInfo.linkedin, label: 'LinkedIn', Icon: Linkedin },
                 { href: personalInfo.leetcode, label: 'LeetCode', Icon: Code2 },
                 { href: personalInfo.codeforces, label: 'Codeforces', Icon: Zap },
                 { href: personalInfo.resume, label: 'Resume', Icon: FileText },
-              ].map(({ href, label, Icon }, i) => (
-                <motion.a
+              ].map(({ href, label, Icon }) => (
+                <a
                   key={label}
                   href={href}
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={label}
-                  initial={{ opacity: 0, y: 8 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.55 + i * 0.06 }}
-                  whileHover={{ y: -3, scale: 1.12, color: '#38bdf8' }}
-                  className="text-white/35 transition-colors"
+                  className="text-white/35 hover:text-cyan-glow transition-colors"
                 >
                   <Icon size={22} />
-                </motion.a>
+                </a>
               ))}
-            </motion.div>
+            </div>
           </div>
 
           <div className="order-1 lg:order-2 flex justify-center pointer-events-auto">
@@ -125,13 +88,8 @@ export function Hero() {
           </div>
         </div>
 
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.6, duration: 0.5 }}
-          className="mt-14 grid grid-cols-3 gap-3 max-w-xl mx-auto lg:mx-0 pointer-events-auto"
-        >
-          {stats.map((stat, i) => {
+        <div className="mt-14 grid grid-cols-3 gap-3 max-w-xl mx-auto lg:mx-0 pointer-events-auto">
+          {stats.map((stat) => {
             const card = (
               <>
                 <div className="font-display text-xl md:text-2xl font-bold text-gradient">{stat.value}</div>
@@ -142,14 +100,10 @@ export function Hero() {
             )
 
             return (
-              <motion.div
+              <div
                 key={stat.label}
-                initial={{ opacity: 0, y: 18 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.65 + i * 0.08 }}
-                whileHover={{ y: -4, scale: 1.03 }}
-                className={`glass rounded-xl p-4 text-center border border-white/[0.06] ${
-                  'href' in stat && stat.href ? 'hover:border-cyan-glow/25 transition-colors' : ''
+                className={`glass rounded-xl p-4 text-center border border-white/[0.06] transition-transform duration-150 hover:-translate-y-0.5 ${
+                  'href' in stat && stat.href ? 'hover:border-cyan-glow/25' : ''
                 }`}
               >
                 {'href' in stat && stat.href ? (
@@ -158,18 +112,17 @@ export function Hero() {
                     target="_blank"
                     rel="noopener noreferrer"
                     data-cursor="hover"
-                    className="block hover:opacity-90 transition-opacity"
-                    aria-label={`${stat.label} profile`}
+                    className="block"
                   >
                     {card}
                   </a>
                 ) : (
                   card
                 )}
-              </motion.div>
+              </div>
             )
           })}
-        </motion.div>
+        </div>
       </div>
 
       <LusionScrollIndicator />
