@@ -4,10 +4,9 @@ import { Github, Linkedin, Mail, Code2, Zap, FileText } from 'lucide-react'
 import { personalInfo, stats } from '../data/portfolio'
 import { ProfilePhoto } from './ProfilePhoto'
 import { GlitchText } from './TextReveal'
-import { RiveSpaceshipCTA } from './RiveSpaceshipCTA'
 import { LusionScrollIndicator } from './LusionDecor'
 import { Magnetic } from './Magnetic'
-import { ConnectorsSectionBackground } from './ConnectorsHeroBackground'
+import { SectionSpaceGlow } from './SectionSpaceGlow'
 
 export function Hero() {
   const sectionRef = useRef<HTMLElement>(null)
@@ -27,7 +26,7 @@ export function Hero() {
       ref={sectionRef}
       className="relative min-h-[100svh] flex items-center px-4 sm:px-6 pt-20 overflow-hidden"
     >
-      <ConnectorsSectionBackground />
+      <SectionSpaceGlow />
 
       <div className="max-w-6xl mx-auto w-full relative z-10 pointer-events-none">
         <motion.div
@@ -73,14 +72,18 @@ export function Hero() {
               className="mt-8 flex flex-wrap items-center justify-center lg:justify-start gap-4 pointer-events-auto"
             >
               <Magnetic>
-                <RiveSpaceshipCTA
-                  label="View Experience"
+                <a
                   href="#experience"
+                  data-cursor="hover"
                   onClick={(e) => {
                     e.preventDefault()
                     document.getElementById('experience')?.scrollIntoView({ behavior: 'smooth' })
                   }}
-                />
+                  className="group px-8 py-3.5 rounded-full bg-accent hover:bg-accent-glow font-medium transition-colors duration-150 glow-border flex items-center gap-2 font-mono text-sm"
+                >
+                  View Experience
+                  <span className="group-hover:translate-x-1 transition-transform">→</span>
+                </a>
               </Magnetic>
               <Magnetic strength={0.12}>
                 <a

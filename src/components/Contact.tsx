@@ -2,7 +2,7 @@ import { motion } from 'framer-motion'
 import { Code2, Zap, Mail, Phone, MapPin, Github, Linkedin, FileText } from 'lucide-react'
 import { SectionHeading, FadeIn } from './SectionHeading'
 import { achievements, personalInfo } from '../data/portfolio'
-import { SectionSpaceGlow } from './ConnectorsHeroBackground'
+import { SectionSpaceGlow } from './SectionSpaceGlow'
 
 const iconMap = {
   code: Code2,

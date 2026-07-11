@@ -8,7 +8,7 @@ import { SplitHeading } from './SplitHeading'
 
 import { FadeIn } from './SectionHeading'
 
-import { SectionSpaceGlow } from './ConnectorsHeroBackground'
+import { SectionSpaceGlow } from './SectionSpaceGlow'
 
 
 

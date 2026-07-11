@@ -1,4 +1,4 @@
-import { useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { motion, useScroll, useTransform } from 'framer-motion'
 import { tunnelCards } from '../data/tunnelCards'
 import { SplitHeading } from './SplitHeading'
@@ -8,6 +8,7 @@ import { LusionCrossRow } from './LusionCross'
 
 export function SpacemanTunnelSection() {
   const containerRef = useRef<HTMLElement>(null)
+  const [canvasActive, setCanvasActive] = useState(false)
 
   const { scrollYProgress } = useScroll({
     target: containerRef,
@@ -19,6 +20,19 @@ export function SpacemanTunnelSection() {
   const hintOpacity = useTransform(scrollYProgress, [0, 0.04, 0.1, 0.16], [0, 1, 1, 0])
   const progressBar = useTransform(scrollYProgress, [0, 1], ['0%', '100%'])
 
+  useEffect(() => {
+    const el = containerRef.current
+    if (!el) return
+
+    const observer = new IntersectionObserver(
+      ([entry]) => setCanvasActive(entry.isIntersecting),
+      { rootMargin: '200px 0px', threshold: 0 },
+    )
+
+    observer.observe(el)
+    return () => observer.disconnect()
+  }, [])
+
   return (
     <section
       id="tunnel"
@@ -27,17 +41,14 @@ export function SpacemanTunnelSection() {
       style={{ height: 'min(700vh, 5200px)' }}
     >
       <div className="sticky top-0 h-[100svh] overflow-x-hidden overflow-y-visible bg-[#030308]">
-        {/* 3D astronaut + star tunnel */}
-        <TunnelAstronautCanvas scrollProgress={scrollYProgress} />
+        {canvasActive && <TunnelAstronautCanvas scrollProgress={scrollYProgress} />}
 
         <div className="absolute inset-0 tunnel-vignette pointer-events-none z-[6]" />
 
-        {/* Top crosses — Lusion style */}
         <div className="absolute top-6 inset-x-[8%] z-20 pointer-events-none">
           <LusionCrossRow count={5} />
         </div>
 
-        {/* Scroll progress rail */}
         <div className="absolute left-4 md:left-8 top-1/2 -translate-y-1/2 h-32 w-px bg-white/[0.08] z-20 hidden md:block">
           <motion.div
             style={{ height: progressBar }}
@@ -62,7 +73,6 @@ export function SpacemanTunnelSection() {
           Scroll
         </motion.p>
 
-        {/* Detail cards — extra vertical room so flips aren't clipped */}
         <div className="absolute inset-x-0 top-[8%] bottom-[8%] z-[18]">
           {tunnelCards.map((card) => (
             <ScrollDetailCard key={card.id} card={card} scrollYProgress={scrollYProgress} />

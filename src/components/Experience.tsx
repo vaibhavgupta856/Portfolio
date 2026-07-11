@@ -1,7 +1,7 @@
 import { Briefcase, MapPin } from 'lucide-react'
 import { SectionHeading, FadeIn } from './SectionHeading'
 import { experience } from '../data/portfolio'
-import { SectionSpaceGlow } from './ConnectorsHeroBackground'
+import { SectionSpaceGlow } from './SectionSpaceGlow'
 
 export function Experience() {
   return (

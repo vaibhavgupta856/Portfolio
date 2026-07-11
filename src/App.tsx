@@ -1,7 +1,6 @@
 import { AppErrorBoundary } from './components/AppErrorBoundary'
 import { SmoothScroll } from './components/SmoothScroll'
 import { CustomCursor } from './components/CustomCursor'
-import { FilmGrain } from './components/FilmGrain'
 import { ScrollProgress } from './components/ScrollProgress'
 import { AnimatedBackground } from './components/AnimatedBackground'
 import { TechMarquee } from './components/TechMarquee'
@@ -15,7 +14,6 @@ import { Contact } from './components/Contact'
 import { SpacemanTunnelSection } from './components/SpacemanTunnelSection'
 import { FinaleSection } from './components/FinaleSection'
 import { Footer } from './components/Footer'
-import { ScreenPaint } from './components/ScreenPaint'
 import { ScrollReveal } from './components/ScrollReveal'
 import { AmbientMusic } from './components/AmbientMusic'
 import { LoadingScreen } from './components/LoadingScreen'
@@ -38,8 +36,6 @@ export default function App() {
         <SmoothScroll>
           <CustomCursor />
           <AmbientMusic />
-          <FilmGrain />
-          <ScreenPaint />
           <ScrollProgress />
           <AnimatedBackground />
           <Navbar />

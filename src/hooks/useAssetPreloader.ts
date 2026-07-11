@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react'
 import { preloadCriticalAssets } from '../lib/preloadAssets'
 
-const MIN_LOAD_MS = 1400
-const FADE_DELAY_MS = 350
+const MIN_LOAD_MS = 700
+const FADE_DELAY_MS = 250
 
 export function useAssetPreloader() {
   const [progress, setProgress] = useState(0)

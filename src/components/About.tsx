@@ -3,7 +3,7 @@ import { GraduationCap, MapPin } from 'lucide-react'
 import { SectionHeading, FadeIn } from './SectionHeading'
 import { ProfilePhoto } from './ProfilePhoto'
 import { summary, education, personalInfo } from '../data/portfolio'
-import { SectionSpaceGlow } from './ConnectorsHeroBackground'
+import { SectionSpaceGlow } from './SectionSpaceGlow'
 
 export function About() {
   return (

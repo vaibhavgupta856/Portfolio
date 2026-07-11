@@ -101,13 +101,13 @@ function TunnelScene({
       <color attach="background" args={['#030308']} />
       <fog attach="fog" args={['#030308', 4, 22]} />
       <ambientLight intensity={0.35} />
-      <directionalLight position={[4, 6, 5]} intensity={1.2} castShadow />
+      <directionalLight position={[4, 6, 5]} intensity={1.2} />
       <pointLight position={[-3, 2, 4]} intensity={0.9} color="#818cf8" />
       <pointLight position={[3, -2, 2]} intensity={0.5} color="#22d3ee" />
 
       <ScrollSmoother targetRef={targetRef} progressRef={progressRef} />
       <TunnelCamera progressRef={progressRef} />
-      <Stars radius={80} depth={60} count={4000} factor={3.5} fade speed={0.6} />
+      <Stars radius={60} depth={40} count={900} factor={2.8} fade speed={0.4} />
       <LusionDiamond progressRef={progressRef} />
       <AstronautWithFallback progressRef={progressRef} />
     </>
@@ -125,10 +125,10 @@ function TunnelCanvasInner({ scrollProgress }: TunnelAstronautCanvasProps) {
   return (
     <div className="absolute inset-0 z-[5] pointer-events-none">
       <Canvas
-        shadows
-        dpr={[1, 1.5]}
+        dpr={[1, 1]}
         camera={{ position: [0, 0.5, 5.5], fov: 48 }}
-        gl={{ alpha: true, antialias: true }}
+        gl={{ alpha: true, antialias: false, powerPreference: 'high-performance' }}
+        frameloop="always"
       >
         <Suspense fallback={null}>
           <TunnelScene progressRef={progressRef} targetRef={targetRef} />
