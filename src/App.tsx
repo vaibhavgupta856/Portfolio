@@ -4,7 +4,6 @@ import { CustomCursor } from './components/CustomCursor'
 import { FilmGrain } from './components/FilmGrain'
 import { ScrollProgress } from './components/ScrollProgress'
 import { AnimatedBackground } from './components/AnimatedBackground'
-import { ScrollVideoBackground } from './components/ScrollVideoBackground'
 import { TechMarquee } from './components/TechMarquee'
 import { Navbar } from './components/Navbar'
 import { Hero } from './components/Hero'
@@ -43,7 +42,6 @@ export default function App() {
           <FilmGrain />
           <ScreenPaint />
           <ScrollProgress />
-          <ScrollVideoBackground />
           <AnimatedBackground />
           <Navbar />
 
