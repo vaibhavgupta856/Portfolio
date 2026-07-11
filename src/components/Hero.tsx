@@ -95,51 +95,28 @@ export function Hero() {
               transition={{ delay: 0.55 }}
               className="mt-6 flex flex-wrap items-center justify-center lg:justify-start gap-5 pointer-events-auto"
             >
-              <a
-                href={personalInfo.github}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-white/35 hover:text-cyan-glow transition-colors"
-                aria-label="GitHub"
-              >
-                <Github size={22} />
-              </a>
-              <a
-                href={personalInfo.linkedin}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-white/35 hover:text-cyan-glow transition-colors"
-                aria-label="LinkedIn"
-              >
-                <Linkedin size={22} />
-              </a>
-              <a
-                href={personalInfo.leetcode}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-white/35 hover:text-cyan-glow transition-colors"
-                aria-label="LeetCode"
-              >
-                <Code2 size={22} />
-              </a>
-              <a
-                href={personalInfo.codeforces}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-white/35 hover:text-cyan-glow transition-colors"
-                aria-label="Codeforces"
-              >
-                <Zap size={22} />
-              </a>
-              <a
-                href={personalInfo.resume}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-white/35 hover:text-cyan-glow transition-colors"
-                aria-label="Resume"
-              >
-                <FileText size={22} />
-              </a>
+              {[
+                { href: personalInfo.github, label: 'GitHub', Icon: Github },
+                { href: personalInfo.linkedin, label: 'LinkedIn', Icon: Linkedin },
+                { href: personalInfo.leetcode, label: 'LeetCode', Icon: Code2 },
+                { href: personalInfo.codeforces, label: 'Codeforces', Icon: Zap },
+                { href: personalInfo.resume, label: 'Resume', Icon: FileText },
+              ].map(({ href, label, Icon }, i) => (
+                <motion.a
+                  key={label}
+                  href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={label}
+                  initial={{ opacity: 0, y: 8 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.55 + i * 0.06 }}
+                  whileHover={{ y: -3, scale: 1.12, color: '#38bdf8' }}
+                  className="text-white/35 transition-colors"
+                >
+                  <Icon size={22} />
+                </motion.a>
+              ))}
             </motion.div>
           </div>
 
@@ -154,7 +131,7 @@ export function Hero() {
           transition={{ delay: 0.6, duration: 0.5 }}
           className="mt-14 grid grid-cols-3 gap-3 max-w-xl mx-auto lg:mx-0 pointer-events-auto"
         >
-          {stats.map((stat) => {
+          {stats.map((stat, i) => {
             const card = (
               <>
                 <div className="font-display text-xl md:text-2xl font-bold text-gradient">{stat.value}</div>
@@ -165,8 +142,12 @@ export function Hero() {
             )
 
             return (
-              <div
+              <motion.div
                 key={stat.label}
+                initial={{ opacity: 0, y: 18 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.65 + i * 0.08 }}
+                whileHover={{ y: -4, scale: 1.03 }}
                 className={`glass rounded-xl p-4 text-center border border-white/[0.06] ${
                   'href' in stat && stat.href ? 'hover:border-cyan-glow/25 transition-colors' : ''
                 }`}
@@ -185,7 +166,7 @@ export function Hero() {
                 ) : (
                   card
                 )}
-              </div>
+              </motion.div>
             )
           })}
         </motion.div>

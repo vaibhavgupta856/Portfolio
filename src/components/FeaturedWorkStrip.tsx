@@ -169,7 +169,7 @@ export function FeaturedWorkStrip() {
 
             <FadeIn key={project.name} delay={i * 0.06}>
 
-              <motion.div whileHover={{ y: -3 }} className="h-full">
+              <motion.div whileHover={{ y: -5 }} className="h-full">
 
                 <ProjectCard project={project} />
 

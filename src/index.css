@@ -215,6 +215,24 @@
   }
 }
 
+@keyframes marquee-reverse {
+  from {
+    transform: translateX(-50%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes star-drift {
+  from {
+    background-position: 0 0, 40px 20px, 0 0, 0 0, 0 0, 0 0, 0 0, 0 0;
+  }
+  to {
+    background-position: 80px 40px, 120px 80px, 60px 30px, 40px 60px, 100px 50px, 70px 90px, 50px 20px, 30px 70px;
+  }
+}
+
 @keyframes grain-shift {
   0%,
   100% {

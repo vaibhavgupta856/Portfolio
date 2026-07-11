@@ -22,7 +22,11 @@ export function About() {
             <div className="glass rounded-2xl p-6 md:p-8 border border-white/[0.07] space-card">
               <p className="text-sm md:text-base text-white/70 leading-relaxed">{summary}</p>
 
-              <motion.div whileHover={{ scale: 1.01 }} className="mt-6 rounded-xl p-5 bg-white/[0.03] border border-white/[0.06]">
+              <motion.div
+                whileHover={{ scale: 1.015, y: -2 }}
+                transition={{ type: 'spring', stiffness: 400, damping: 28 }}
+                className="mt-6 rounded-xl p-5 bg-white/[0.03] border border-white/[0.06]"
+              >
                 <div className="flex items-start gap-4">
                   <div className="p-3 rounded-xl bg-indigo-500/15">
                     <GraduationCap className="text-cyan-glow" size={22} />

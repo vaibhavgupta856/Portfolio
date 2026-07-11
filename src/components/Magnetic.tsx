@@ -1,4 +1,5 @@
 import { type ReactNode } from 'react'
+import { motion } from 'framer-motion'
 
 interface MagneticProps {
   children: ReactNode
@@ -6,7 +7,16 @@ interface MagneticProps {
   strength?: number
 }
 
-/** Passthrough — magnetic springs were adding lag on hover. */
+/** Light hover lift — no continuous spring tracking. */
 export function Magnetic({ children, className = '' }: MagneticProps) {
-  return <div className={className}>{children}</div>
+  return (
+    <motion.div
+      className={className}
+      whileHover={{ y: -3, scale: 1.03 }}
+      whileTap={{ scale: 0.97 }}
+      transition={{ type: 'spring', stiffness: 420, damping: 28 }}
+    >
+      {children}
+    </motion.div>
+  )
 }

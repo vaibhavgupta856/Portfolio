@@ -11,7 +11,7 @@ export function LoadingScreen({ progress }: LoadingScreenProps) {
     <motion.div
       initial={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+      transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
       className="fixed inset-0 z-[9999] flex flex-col items-center justify-center bg-[#030014]"
       aria-live="polite"
       aria-busy="true"
@@ -19,10 +19,25 @@ export function LoadingScreen({ progress }: LoadingScreenProps) {
     >
       <div className="absolute inset-0 space-stars opacity-35" />
 
+      <motion.div
+        className="absolute w-56 h-56 rounded-full border border-white/[0.06]"
+        animate={{ rotate: 360 }}
+        transition={{ duration: 20, repeat: Infinity, ease: 'linear' }}
+      />
+      <motion.div
+        className="absolute w-40 h-40 rounded-full border border-cyan-glow/20"
+        animate={{ rotate: -360 }}
+        transition={{ duration: 14, repeat: Infinity, ease: 'linear' }}
+      />
+
       <div className="relative z-10 flex flex-col items-center">
-        <p className="font-display text-3xl sm:text-4xl font-bold tracking-tight mb-10">
+        <motion.p
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="font-display text-3xl sm:text-4xl font-bold tracking-tight mb-10"
+        >
           VG<span className="text-accent">.</span>
-        </p>
+        </motion.p>
 
         <div className="w-44 sm:w-52 h-[2px] rounded-full bg-white/[0.08] overflow-hidden">
           <motion.div

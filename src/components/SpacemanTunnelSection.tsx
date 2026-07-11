@@ -1,14 +1,12 @@
-import { useEffect, useRef, useState } from 'react'
+import { useRef } from 'react'
 import { motion, useScroll, useTransform } from 'framer-motion'
 import { tunnelCards } from '../data/tunnelCards'
 import { SplitHeading } from './SplitHeading'
 import { ScrollDetailCard } from './LusionDetailCard'
-import { TunnelAstronautCanvas } from './TunnelAstronautCanvas'
 import { LusionCrossRow } from './LusionCross'
 
 export function SpacemanTunnelSection() {
   const containerRef = useRef<HTMLElement>(null)
-  const [canvasActive, setCanvasActive] = useState(false)
 
   const { scrollYProgress } = useScroll({
     target: containerRef,
@@ -20,19 +18,6 @@ export function SpacemanTunnelSection() {
   const hintOpacity = useTransform(scrollYProgress, [0, 0.04, 0.1, 0.16], [0, 1, 1, 0])
   const progressBar = useTransform(scrollYProgress, [0, 1], ['0%', '100%'])
 
-  useEffect(() => {
-    const el = containerRef.current
-    if (!el) return
-
-    const observer = new IntersectionObserver(
-      ([entry]) => setCanvasActive(entry.isIntersecting),
-      { rootMargin: '200px 0px', threshold: 0 },
-    )
-
-    observer.observe(el)
-    return () => observer.disconnect()
-  }, [])
-
   return (
     <section
       id="tunnel"
@@ -41,8 +26,7 @@ export function SpacemanTunnelSection() {
       style={{ height: 'min(700vh, 5200px)' }}
     >
       <div className="sticky top-0 h-[100svh] overflow-x-hidden overflow-y-visible bg-[#030308]">
-        {canvasActive && <TunnelAstronautCanvas scrollProgress={scrollYProgress} />}
-
+        <div className="absolute inset-0 space-stars opacity-40 pointer-events-none" />
         <div className="absolute inset-0 tunnel-vignette pointer-events-none z-[6]" />
 
         <div className="absolute top-6 inset-x-[8%] z-20 pointer-events-none">
