@@ -164,6 +164,20 @@ export const projects: Project[] = [
     github: 'https://github.com/vaibhavgupta856/REPOPILOT',
   },
   {
+    name: 'CHESS ARENA',
+    subtitle: '3D Real-Time Chess Platform',
+    period: '2026',
+    tech: ['Go', 'React', 'Three.js', 'WebSocket', 'SQLite'],
+    description:
+      'Server-authoritative chess platform with a cinematic 3D board, real-time multiplayer, bot opponents, accounts, friends, ELO ratings, and an in-game coach — backed by a custom Go engine.',
+    highlights: [
+      'Custom Go chess engine with full rules, UCI/SAN moves, and WebSocket live sync',
+      'React Three Fiber 3D board with animated pieces, Valhalla capture platforms, and 2D fallback',
+      'Hot-seat, online rooms, adjustable bots, JWT auth, friends, rated ELO, and coach (local/bot)',
+    ],
+    gradient: 'from-amber-400 via-orange-500 to-rose-500',
+  },
+  {
     name: 'AI WEBSITE BUILDER',
     subtitle: 'Gemini-Powered Code Generation',
     period: '2025',

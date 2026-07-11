@@ -15,7 +15,13 @@ export type TunnelCard = {
   github?: string
 }
 
-const projectTags = ['Featured Project', 'AI Tooling', 'Full Stack', 'Systems & FPGA']
+const projectTags = [
+  'Featured Project',
+  'AI Tooling',
+  '3D Multiplayer',
+  'Full Stack',
+  'Systems & FPGA',
+]
 
 function buildRawCards(): Omit<TunnelCard, 'scroll' | 'offsetY' | 'position'>[] {
   const projectEntries = projects.map((project, index) => ({
