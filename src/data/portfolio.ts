@@ -107,17 +107,6 @@ export const experience = [
       'Expanded production build pipelines to generate 2 debug-only artifacts, enabling customer-facing debugging for Questa Sim.',
     ],
   },
-  {
-    role: 'Competitive Programming Expert',
-    company: 'Mercor',
-    location: 'Remote',
-    period: 'Jan 2026 — Feb 2026',
-    highlights: [
-      'Authored 10 algorithmic interview problems spanning advanced state-space algorithms, graph theory, and constructive algorithms.',
-      'Formulated 50 test cases across 10 problems covering adversarial edge cases and worst-case time complexity constraints.',
-      'Containerized 10 reference implementations in isolated Docker environments for pre-deployment validation.',
-    ],
-  },
 ]
 
 export type Project = {
