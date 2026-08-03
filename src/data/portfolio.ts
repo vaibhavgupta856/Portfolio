@@ -17,7 +17,7 @@ export const personalInfo = {
 export const stats = [
   {
     label: 'Codeforces',
-    value: '1776',
+    value: '1841',
     suffix: 'Expert',
     href: 'https://codeforces.com/profile/Vaibhav_Gupta_22',
   },
@@ -210,7 +210,7 @@ export const achievements = [
   },
   {
     title: 'Codeforces Rating',
-    value: '1776 (Expert)',
+    value: '1841 (Expert)',
     icon: 'zap',
     href: 'https://codeforces.com/profile/Vaibhav_Gupta_22',
   },
