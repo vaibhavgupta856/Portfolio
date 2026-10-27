@@ -10,7 +10,7 @@ export const personalInfo = {
   linkedin: 'https://linkedin.com/in/vaibhav-gupta-6ba288256',
   leetcode: 'https://leetcode.com/u/gupta__vaibhav__/',
   codeforces: 'https://codeforces.com/profile/Vaibhav_Gupta_22',
-  resume: 'https://drive.google.com/file/d/1d4KEYa98v__4pQAC0DgRBuUT0pLrMFcE/view',
+  resume: 'https://drive.google.com/file/d/14XTooKXJdCDl1Ut4cvzrOAM3eV-SS3Dg/view',
   profileImage: '/profile.jpg',
 }
 
