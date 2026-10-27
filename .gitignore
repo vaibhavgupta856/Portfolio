@@ -1,19 +1,51 @@
-node_modules
-dist
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+# dependencies
+/node_modules
+/.pnp
+.pnp.js
+.yarn/install-state.gz
+
+# testing
+/coverage
+
+# next.js
+/.next/
+/out/
+
+# production
+/build
+
+# misc
 .DS_Store
-*.local
-.env
-.cursor
-playwright-report
-test-results
-lusion.co
-lusion.co.zip
-lusion-page.html
-rive-page.html
-/earth_card.buf
-*.gif
-ffb45ef6-942b-40f4-9c84-00c5968cb44a-1_all_8306.jpg
-public/videos/
-Vaibhav_Gupta_Resume.pdf
-tsconfig.tsbuildinfo
+*.pem
+
+# debug
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# local env files
+.env*.local
+
+# vercel
 .vercel
+
+# typescript
+*.tsbuildinfo
+next-env.d.ts
+
+src/app/(components)
+
+# raw screenshot dump — source images; optimized versions live in each project dir
+public/assets/projects-screenshots/raw/
+
+# local scratch files kept outside the repo
+/.vite
+/*.zip
+/*.gif
+/*.buf
+/*.jpg
+/*.pdf
+/lusion-page.html
+/rive-page.html
