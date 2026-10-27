@@ -5,7 +5,7 @@ export const personalInfo = {
   email: 'vaibhav.gupta.22031@iitgoa.ac.in',
   phone: '+91 9219545449',
   location: 'Bengaluru, India',
-  availability: 'Open to Onsite & Remote',
+  availability: 'Open to Relocation & Remote',
   github: 'https://github.com/vaibhavgupta856',
   linkedin: 'https://linkedin.com/in/vaibhav-gupta-6ba288256',
   leetcode: 'https://leetcode.com/u/gupta__vaibhav__/',
@@ -17,7 +17,7 @@ export const personalInfo = {
 export const stats = [
   {
     label: 'Codeforces',
-    value: '1841',
+    value: '1848',
     suffix: 'Expert',
     href: 'https://codeforces.com/profile/Vaibhav_Gupta_22',
   },
@@ -31,7 +31,7 @@ export const stats = [
 ]
 
 export const summary =
-  'Computer Science graduate from IIT Goa with dual Siemens EDA internships building backend infrastructure, distributed systems, and AI-integrated tooling — including a 2,000+ option configuration system that improved runtime performance by 20%. Strong foundation in algorithms and system design.'
+  'New grad software engineer from IIT Goa. Two internships at Siemens EDA on the Questa Sim compiler, then a full-time role building a production platform for electric vehicle charging at Massive Mobility. Writes C, Python, TypeScript and SQL, and prefers problems where the answer can be measured instead of argued about.'
 
 export const education = {
   school: 'Indian Institute of Technology (IIT), Goa',
@@ -43,22 +43,48 @@ export const education = {
 export const skills = [
   {
     category: 'Languages',
-    items: ['C/C++', 'Go', 'Python', 'Java', 'TypeScript', 'JavaScript', 'SQL'],
+    items: ['C/C++', 'Python', 'TypeScript', 'JavaScript', 'Go', 'Java', 'SQL'],
   },
   {
-    category: 'Frameworks & Infra',
+    category: 'Backend & Data',
     items: [
-      'REST APIs',
-      'Microservices',
-      'React',
+      'Node.js',
+      'Express',
       'FastAPI',
-      'Express.js',
-      'Docker',
-      'Redis',
       'PostgreSQL',
       'MongoDB',
+      'Redis',
+      'RabbitMQ',
+      'REST APIs',
+      'Microservices',
+      'WebSockets',
+      'RBAC',
+    ],
+  },
+  {
+    category: 'Frontend',
+    items: [
+      'React',
+      'Next.js',
+      'Three.js / R3F',
+      'Vite',
+      'Recharts',
+      'Responsive UI',
+      'Data Visualization',
+    ],
+  },
+  {
+    category: 'Tools & Practices',
+    items: [
+      'Git',
+      'Docker',
       'AWS',
+      'GCP',
+      'Linux',
       'CI/CD',
+      'Unit & Integration Testing',
+      'Agile',
+      'Observability',
     ],
   },
   {
@@ -75,24 +101,40 @@ export const skills = [
     category: 'CS Core',
     items: [
       'Data Structures & Algorithms',
-      'Operating Systems',
-      'Machine Learning',
-      'Distributed Systems',
       'System Design',
+      'Operating Systems',
+      'Distributed Systems',
+      'Object Oriented Design',
+      'Concurrency',
+      'Machine Learning',
     ],
   },
 ]
 
 export const experience = [
   {
+    role: 'Product Development and Management',
+    company: 'Massive Mobility',
+    location: 'Gurugram',
+    period: 'Jul 2026 — Present',
+    highlights: [
+      'Shipped an EV charging platform from an empty repository to 32 screens in daily use, designing the Postgres schema, the Node and Express services and the React and TypeScript interface single-handedly.',
+      'Turned the operator console into one screen covering live charger status, multi-currency customer billing and a natural language assistant, scoped by 53 permissions across 4 user roles, iterating on feedback from the operations team.',
+      'Cut hardware out of the test loop with a charger simulator in Node and React, letting the team run integration tests across all 19 charger commands before any physical unit existed.',
+      'Gave operations a next-day demand forecast running at 97% accuracy across 1,000+ charging sites, by training a LightGBM model with prediction intervals and building the dashboard around it.',
+      'Made a core page 20× faster (20 SQL queries / 48 ms → 11 queries / 2.4 ms) by replacing offset pagination with keyset pagination and dropping a count query nothing read.',
+      'Found and specified the fix for a billing defect charging two customers inside one session, by tracing 190,000+ sessions to 47 charger models that never report a disconnect.',
+    ],
+  },
+  {
     role: 'Research and Development Intern',
     company: 'Siemens EDA',
     location: 'Bengaluru',
     period: 'Jan 2026 — Jun 2026',
     highlights: [
-      'Engineered a centralized C registry system managing 2,000+ runtime configuration options in Questa Sim, consolidating feature-flag resolution into a single configurable system.',
-      'Boosted Questa Sim runtime performance by 20% with a rollback mechanism and cached feature lookups, enabling newer builds to adopt older release behavior without backend code modifications.',
-      'Built type-checking and regression testing workflows covering 100+ feature switches into Questa Sim\'s release pipeline, catching backward-compatibility breaks.',
+      'Built the version control layer that lets any new Questa Sim build reproduce the behavior of an older release with no backend code changes, and made it 20% faster by caching feature lookups.',
+      'Centralized 2,000+ runtime configuration options into one registry in C, replacing feature flag checks that were scattered across the codebase.',
+      'Caught compatibility breaks before release instead of after, across 100+ feature switches, by adding type checking, verification and regression testing to the build pipeline.',
     ],
   },
   {
@@ -101,8 +143,8 @@ export const experience = [
     location: 'Bengaluru',
     period: 'May 2025 — Jul 2025',
     highlights: [
-      'Decreased VHDL compiler memory utilization by 15% by restructuring datatype storage layouts to enforce optimal alignment.',
-      'Identified compiler-specific alignment discrepancies across 3 C compiler toolchains by authoring 15 VHDL test cases.',
+      'Reduced memory use 15% in the VHDL compiler by restructuring how datatypes are stored so they align optimally.',
+      'Exposed divergent offset calculation across 3 C compiler toolchains by authoring 15 test cases that checked datatype alignment under each.',
       'Expanded production build pipelines to generate 2 debug-only artifacts, enabling customer-facing debugging for Questa Sim.',
     ],
   },
@@ -156,7 +198,7 @@ export const projects: Project[] = [
   {
     name: 'CHESS ARENA',
     subtitle: '3D Real-Time Chess Platform',
-    period: '2026',
+    period: 'Jun 2026 — Jul 2026',
     tech: ['Go', 'React', 'Three.js', 'WebSocket', 'SQLite'],
     description:
       'Server-authoritative chess platform with a cinematic 3D board, real-time multiplayer, bot opponents, accounts, friends, ELO ratings, and an in-game coach — backed by a custom Go engine.',
@@ -172,7 +214,7 @@ export const projects: Project[] = [
   {
     name: 'REPO PILOT',
     subtitle: 'LLM-Powered Coding Agent',
-    period: 'Jun 2025',
+    period: 'May 2026 — Jun 2026',
     tech: ['FastAPI', 'React', 'TypeScript', 'Tree-sitter', 'GitPython'],
     description:
       'Autonomous coding agent with a 4-stage pipeline (Plan → Code → Test → Self-Heal) and multi-provider LLM routing across 5 inference backends.',
@@ -242,9 +284,14 @@ export const achievements = [
   },
   {
     title: 'Codeforces Rating',
-    value: '1841 (Expert)',
+    value: '1848 (Expert)',
     icon: 'zap',
     href: 'https://codeforces.com/profile/Vaibhav_Gupta_22',
+  },
+  {
+    title: 'JEE Advanced',
+    value: 'All India Rank 1335',
+    icon: 'award',
   },
 ]
 

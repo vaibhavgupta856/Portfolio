@@ -1,4 +1,4 @@
-import { Code2, Zap, Mail, Phone, MapPin, Github, Linkedin, FileText } from 'lucide-react'
+import { Code2, Zap, Award, Mail, Phone, MapPin, Github, Linkedin, FileText } from 'lucide-react'
 import { SectionHeading, FadeIn } from './SectionHeading'
 import { achievements, personalInfo } from '../data/portfolio'
 import { SectionSpaceGlow } from './SectionSpaceGlow'
@@ -6,6 +6,7 @@ import { SectionSpaceGlow } from './SectionSpaceGlow'
 const iconMap = {
   code: Code2,
   zap: Zap,
+  award: Award,
 }
 
 export function Contact() {
