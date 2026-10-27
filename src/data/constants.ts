@@ -350,6 +350,52 @@ export const EXPERIENCE: Experience[] = [
   },
 ];
 
+export const EDUCATION = {
+  school: "Indian Institute of Technology (IIT), Goa",
+  degree: "B.Tech, Computer Science and Engineering",
+  period: { start: "2022", end: "2026" },
+  coursework: [
+    "Data Structures and Algorithms",
+    "Operating Systems",
+    "Distributed Systems",
+    "System Design",
+    "Object Oriented Design",
+    "Concurrency",
+  ],
+};
+
+export type Achievement = {
+  label: string;
+  value: string;
+  detail: string;
+  href?: string;
+};
+
+export const ACHIEVEMENTS: Achievement[] = [
+  {
+    label: "Codeforces",
+    value: "1848",
+    detail: "Expert",
+    href: "https://codeforces.com/profile/Vaibhav_Gupta_22",
+  },
+  {
+    label: "LeetCode",
+    value: "2104",
+    detail: "Knight",
+    href: "https://leetcode.com/u/gupta__vaibhav__/",
+  },
+  {
+    label: "Problems solved",
+    value: "1,200+",
+    detail: "Codeforces, LeetCode, CodeChef",
+  },
+  {
+    label: "JEE Advanced",
+    value: "AIR 1335",
+    detail: "All India Rank",
+  },
+];
+
 export const themeDisclaimers = {
   light: [
     "Warning: Light mode emits a gazillion lumens of pure radiance!",
