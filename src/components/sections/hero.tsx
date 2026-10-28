@@ -11,7 +11,7 @@ import {
 import { usePreloader } from "../preloader";
 import { BlurIn, BoxReveal } from "../reveal-animations";
 import ScrollDownIcon from "../scroll-down-icon";
-import { SiGithub, SiLeetcode } from "react-icons/si";
+import { SiCodeforces, SiGithub, SiLeetcode } from "react-icons/si";
 import { FaLinkedin as SiLinkedin } from "react-icons/fa";
 import { config } from "@/data/config";
 
@@ -113,6 +113,15 @@ const HeroSection = () => {
                     >
                       <Button variant={"outline"}>
                         <SiLeetcode size={24} />
+                      </Button>
+                    </Link>
+                    <Link
+                      href={config.social.codeforces}
+                      target="_blank"
+                      className="cursor-can-hover"
+                    >
+                      <Button variant={"outline"}>
+                        <SiCodeforces size={24} />
                       </Button>
                     </Link>
                     <Link
